@@ -1217,7 +1217,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff36ff;
+  background: #c3bfff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2347,10 +2347,8 @@ embed {
 }
 @media (max-width: 767px) {
   .site-nav {
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
     left: 0;
-    margin: 0;
+    margin: -300px 0px 57.5px 0px;
     padding: 0;
     width: 100%;
   }
@@ -2364,13 +2362,14 @@ embed {
 .menu .menu-item a:hover,
 .menu .menu-item span.exturl:hover {
   background: transparent;
-  border-bottom: 1px solid var(--link-hover-color) !important;
+  border-bottom: 1px solid #eee !important;
+  color: #eee;
 }
 @media (max-width: 767px) {
   .menu-item-active a,
   .menu .menu-item a:hover,
   .menu .menu-item span.exturl:hover {
-    border-bottom: 1px dotted #ddd !important;
+    border-bottom: 0px dotted #ddd !important;
   }
 }
 @media (max-width: 767px) {
@@ -2402,6 +2401,7 @@ embed {
 .menu .menu-item .badge {
   background: #eee;
   padding: 1px 4px;
+  color: #555;
 }
 .sub-menu {
   margin: 10px 0;
@@ -2459,8 +2459,12 @@ embed {
   white-space: nowrap;
 }
 .header {
-  background-size: cover;
   background: url("../images/header_background.jpg") no-repeat;
+  background-size: cover;
+}
+.site-nav-toggle,
+.site-nav-right {
+  margin-top: -600px;
 }
 code {
   color: #c7254e;

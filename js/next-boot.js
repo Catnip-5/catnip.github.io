@@ -15,7 +15,7 @@ NexT.boot.registerEvents = function() {
 
     if (typeof Velocity === 'function') {
       Velocity(siteNav, animateAction, {
-        duration: 200,
+        duration: 0,
         complete: function() {
           siteNav.classList.toggle('site-nav-on');
         }

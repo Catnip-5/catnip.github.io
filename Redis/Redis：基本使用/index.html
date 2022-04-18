@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon_32.png">
+  <link rel="mask-icon" href="/images/icons/icon_512.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hannotate SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"catnip-5.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"dimmer":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Redis常用命令Key（键） KEYS pattern 查找所有符合给定模式 pattern 的 key EXISTS key 检查指定 key 是否存在 DEL key [key ...] 删除一个或多个 key RENAME key newkey 重命名 key RENAMENX key newkey 当 newkey 不存在时，重命名 key EXPIRE key seconds 设置 k">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis：基本使用">
+<meta property="og:url" content="https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Catnip">
+<meta property="og:description" content="Redis常用命令Key（键） KEYS pattern 查找所有符合给定模式 pattern 的 key EXISTS key 检查指定 key 是否存在 DEL key [key ...] 删除一个或多个 key RENAME key newkey 重命名 key RENAMENX key newkey 当 newkey 不存在时，重命名 key EXPIRE key seconds 设置 k">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-20T08:51:29.000Z">
+<meta property="article:modified_time" content="2022-04-18T15:29:28.927Z">
+<meta property="article:author" content="Catnip">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Redis：基本使用 | Catnip</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Catnip" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Catnip</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<div id="hitokoto" style="text-align: center;padding: 5px 0px 20px 0px;"></div>
+
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = "" + data.hitokoto + "  来自于 " + data.from;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+</script>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis：基本使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-20 16:51:29" itemprop="dateCreated datePublished" datetime="2019-10-20T16:51:29+08:00">2019-10-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 23:29:28" itemprop="dateModified" datetime="2022-04-18T23:29:28+08:00">2022-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Redis常用命令"><a href="#Redis常用命令" class="headerlink" title="Redis常用命令"></a>Redis常用命令</h2><h3 id="Key（键）"><a href="#Key（键）" class="headerlink" title="Key（键）"></a>Key（键）</h3><ul>
+<li><code>KEYS pattern</code> 查找所有符合给定模式 pattern 的 key</li>
+<li><code>EXISTS key</code> 检查指定 key 是否存在</li>
+<li><code>DEL key [key ...]</code> 删除一个或多个 key</li>
+<li><code>RENAME key newkey</code> 重命名 key</li>
+<li><code>RENAMENX key newkey</code> 当 newkey 不存在时，重命名 key</li>
+<li><code>EXPIRE key seconds</code> 设置 key 生存时间（秒）</li>
+<li><code>PEXPIRE key milliseconds</code> 设置 key 生存时间（毫秒）</li>
+<li><code>EXPIREAT key timestamp</code> 设置 key 生存时间（UNIX 时间戳，秒）</li>
+<li><code>PEXPIREAT key milliseconds-timestamp</code> 设置 key 生存时间（UNIX 时间戳，毫秒）</li>
+<li><code>PERSIST key</code> 移除 key 生存时间，转换成永不过期的 key</li>
+<li><code>TTL key </code> 获取 key 剩余生存时间（秒）</li>
+<li><code>PTTL key </code> 获取 key 剩余生存时间（毫秒）</li>
+<li><code>RANDOMKEY</code> 从当前数据库中随机返回（不删除）一个 key</li>
+<li><code>TYPE key</code> 返回 key 所储存的值的类型</li>
+<li><code>MOVE key db</code> 将当前数据库的 key 移动到给定的数据库 db 当中</li>
+<li><code>SORT key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern ...]] [ASC | DESC] [ALPHA] [STORE destination]</code>返回或保存给定列表、集合、有序集合 key 中经过排序的元素</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="String（字符串）"><a href="#String（字符串）" class="headerlink" title="String（字符串）"></a>String（字符串）</h3><ul>
+<li><code>GET key</code> 获取 key 值</li>
+<li><code>SET key value [EX seconds] [PX milliseconds] [NX|XX]</code> 设置 key 值</li>
+<li><code>SETNX key value</code> 设置 key 值，仅当 key 不存在</li>
+<li><code>MGET key [key ...]</code> 获取一个或多个 key 值</li>
+<li><code>MSET key value [key value ...]</code> 设置一个或多个 key 值</li>
+<li><code>MSETNX key value [key value ...]</code> 设置一个或多个 key 值，仅当所有 key 都不存在</li>
+<li><code>GETRANGE key start end</code> 获取  key 值 start 和 end 索引范围的字符串</li>
+<li><code>SETRANGE key offset value</code> 设置 key 值，根据指定索引位置</li>
+<li><code>GETSET key value</code> 设置 key 值，并返回旧值</li>
+<li><code>SETEX key seconds value</code> 设置 key 值，并设置生存时间（秒）</li>
+<li><code>PSETEX key milliseconds value</code> 设置 key 值，并设置生存时间（毫秒）</li>
+<li><code>APPEND key value</code> 将 value 追加到原来 key 值末尾</li>
+<li><code>STRLEN key</code> 获取 key 值长度</li>
+<li><code>INCR key</code> 将 key 值增1</li>
+<li><code>DECR key</code> 将 key 值减1</li>
+<li><code>INCRBY key increment</code> 将 key 值加上增量 increment</li>
+<li><code>DECRBY key decrement</code> 将 key 值减去减量 decrement</li>
+<li><code>INCRBYFLOAT key increment</code> 将 key 值加上浮点数增量 increment</li>
+</ul>
+<h3 id="Hash（哈希表）"><a href="#Hash（哈希表）" class="headerlink" title="Hash（哈希表）"></a>Hash（哈希表）</h3><ul>
+<li><code>HKEYS key</code> 获取哈希表 key 中所有的 field</li>
+<li><code>HVALS key</code> 获取哈希表 key 中所有的 field 值</li>
+<li><code>HGETALL key</code> 获取哈希表 key 中所有的 field 和 field 值</li>
+<li><code>HEXISTS key field</code> 检查哈希表 key 中的 field 是否存在</li>
+<li><code>HGET key field</code> 获取哈希表 key 中的 field 值</li>
+<li><code>HSET key field value</code> 设置哈希表 key 中的 field</li>
+<li><code>HSETNX key field value</code> 设置哈希表 key 中的 field，仅当 field 不存在</li>
+<li><code>HMGET key field [field ...]</code> 获取哈希表 key 中的一个或多个 field 值</li>
+<li><code>HMSET key field value [field value ...]</code> 设置哈希表 key 中的一个或多个 field</li>
+<li><code>HDEL key field [field ...]</code> 删除哈希表 key 中的一个或多个 field</li>
+<li><code>HLEN key</code> 获取哈希表 key 中 field 的数量</li>
+<li><code>HINCRBY key field increment</code> 将哈希表 key 中的 field 值加上增量 increment</li>
+<li><code>HINCRBYFLOAT key field increment</code> 将哈希表 key 中的 field 值加上浮点数增量 increment</li>
+</ul>
+<h3 id="List（列表）"><a href="#List（列表）" class="headerlink" title="List（列表）"></a>List（列表）</h3><ul>
+<li><code>LRANGE key start stop</code> 获取  key 中 start 和 stop 索引范围的元素</li>
+<li><code>LPUSH key value [value ...]</code> 插入一个或多个值 value 到列表 key 的表头</li>
+<li><code>RPUSH key value [value ...]</code> 插入一个或多个值 value 到列表 key 的表尾</li>
+<li><code>LPUSHX key value</code> 插入 value 值到列表 key 的表头，仅当 key 存在</li>
+<li><code>RPUSHX key value</code> 插入 value 值到列表 key 的表尾，仅当 key 存在</li>
+<li><code>LPOP key</code> 移除并返回列表 key 的头元素</li>
+<li><code>RPOP key</code> 移除并返回列表 key 的尾元素</li>
+<li><code>LREM key count value</code> 移除 value 值，指定重复 value 值数量 count</li>
+<li><code>LLEN key</code> 获取 key 长度</li>
+<li><code>LINDEX key index</code> 获取下标为 index 的元素</li>
+<li><code>LSET key index value</code> 设置下标为 index 的元素</li>
+<li><code>LINSERT key BEFORE|AFTER pivot value</code> 插入 value 值，位于值 pivot 之前或之后</li>
+<li><code>LTRIM key start stop</code> 截取 key 中 start 和 stop 索引范围的元素后，再赋值给 key</li>
+<li><code>RPOPLPUSH source destination</code> 将列表 source 尾元素弹出，再插入到列表 destination 头元素</li>
+</ul>
+<h3 id="Set（集合）"><a href="#Set（集合）" class="headerlink" title="Set（集合）"></a>Set（集合）</h3><ul>
+<li><code>SMEMBERS key</code> 获取集合 key 所有元素</li>
+<li><code>SADD key member [member ...]</code> 加入 member 元素到 key 集合</li>
+<li><code>SREM key member [member ...]</code> 移除集合 key 中的一个或多个 member 元素</li>
+<li><code>SCARD key</code> 获取集合 key 数量</li>
+<li><code>SISMEMBER key member</code> 判断 member 元素是否存在 key 集合</li>
+<li><code>SDIFF key [key ...]</code> 获取第一个 key 集合的差集</li>
+<li><code>SDIFFSTORE destination key [key ...]</code> 获取第一个 key 集合的差集，并赋值给 destination 集合</li>
+<li><code>SINTER key [key ...]</code> 获取第一个 key 集合的交集</li>
+<li><code>SINTERSTORE destination key [key ...]</code> 获取第一个 key 集合的交集，并赋值给 destination 集合</li>
+<li><code>SUNION key [key ...]</code> 获取第一个 key 集合的并集</li>
+<li><code>SUNIONSTORE destination key [key ...]</code> 获取第一个 key 集合的并集，并赋值给 destination 集合</li>
+<li><code>SMOVE source destination member</code> 将 member 元素从 source 集合移动到 destination 集合</li>
+<li><code>SPOP key</code> 移除并返回集合中的一个随机元素</li>
+<li><code>SRANDMEMBER key [count]</code> 获取 count 数量的随机元素</li>
+</ul>
+<h3 id="SortedSet（有序集合）"><a href="#SortedSet（有序集合）" class="headerlink" title="SortedSet（有序集合）"></a>SortedSet（有序集合）</h3><ul>
+<li><code>ZADD key score member [[score member] [score member] ...]</code> 加入一个或多个 member 元素及 score 值到序集中</li>
+<li><code>ZREM key member [member ...]</code> 移除序集 key 中一个或多个 member 元素</li>
+<li><code>ZRANGE key start stop [WITHSCORES]</code> 获取序集 key 中 start 和 stop 区间范围的元素（正序）</li>
+<li><code>ZREVRANGE key start stop [WITHSCORES]</code> 获取序集 key 中 start 和 stop 区间范围的元素（反序）</li>
+<li><code>ZCARD key</code> 获取序集 key 的元素数量</li>
+<li><code>ZCOUNT key min max</code> 获取序集 key 中 score 值在 min 和 max 之间的元素数量</li>
+<li><code>ZSCORE key member</code> 获取序集 key 中 score 值</li>
+<li><code>ZRANK key member</code> 获取序集 key 中 member 下标（正序）</li>
+<li><code>ZREVRANK key member</code> 获取序集 key 中 member 下标（反序）</li>
+<li><code>ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]</code> 获取序集 key 中 score 值在 min 和 max 之间的元素（正序）</li>
+<li><code>ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]</code> 获取序集 key 中 score 值在 min 和 max 之间的元素（反序）</li>
+<li><code>ZREMRANGEBYSCORE key min max</code> 移除序集 key 中 score 值在 min 和 max 之间的元素</li>
+<li><code>ZREMRANGEBYRANK key start stop</code> 移除序集 key 中 score 值下标在 start 和 stop 之间的元素</li>
+<li><code>ZINCRBY key increment member</code> 将序集 key 中 member 的 score 值加上增量 increment</li>
+</ul>
+<h3 id="Connection（连接）"><a href="#Connection（连接）" class="headerlink" title="Connection（连接）"></a>Connection（连接）</h3><ul>
+<li><code>AUTH password</code> 验证密码，解锁命令</li>
+<li><code>ECHO message</code> 打印 message 信息</li>
+<li><code>PING</code> 用于测试与服务器的连接是否仍然生效</li>
+<li><code>QUIT</code> 请求服务器关闭与当前客户端的连接</li>
+<li><code>SELECT index</code> 切换到指定的数据库</li>
+</ul>
+<h3 id="Server（服务器）"><a href="#Server（服务器）" class="headerlink" title="Server（服务器）"></a>Server（服务器）</h3><ul>
+<li><code>SHUTDOWN</code> 停止客户端</li>
+<li><code>FLUSHDB</code> 清空当前数据库</li>
+<li><code>FLUSHALL</code> 清空所有数据库</li>
+<li><code>DBSIZE</code> 获取当前数据库 key 数量</li>
+<li><code>TIME</code> 获取当前服务器时间</li>
+<li><code>INFO [section]</code> 获取服务器各种信息和统计数值</li>
+<li><code>CONFIG GET parameter</code> 获取服务器配置参数</li>
+<li><code>CONFIG SET parameter value</code> 设置服务器配置参数，动态设置无需重启</li>
+<li><code>SAVE</code> 执行同步保存操作</li>
+<li><code>BGSAVE</code> 执行异步保存操作</li>
+<li><code>BGREWRITEAOF</code> 执行一个 AOF文件 重写操作</li>
+<li><code>SLAVEOF host port</code> 将当前服务器转变为指定服务器的从属服务器</li>
+</ul>
+<h3 id="Transaction（事务）"><a href="#Transaction（事务）" class="headerlink" title="Transaction（事务）"></a>Transaction（事务）</h3><ul>
+<li><code>MULTI</code> 标记一个事务块的开始</li>
+<li><code>EXEC</code> 执行所有事务块内的命令</li>
+<li><code>DISCARD</code> 取消事务，放弃执行事务块内的所有命令</li>
+<li><code>WATCH key [key ...]</code> 监视一个或多个 key ，如果在事务执行之前 key 被其他命令所改动，那么事务将被打断</li>
+<li><code>UNWATCH</code> 取消 WATCH 命令对所有 key 的监视</li>
+</ul>
+<h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><h3 id="RDB（数据快照）"><a href="#RDB（数据快照）" class="headerlink" title="RDB（数据快照）"></a>RDB（数据快照）</h3><p>RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">################################ SNAPSHOTTING  ################################</span></span><br><span class="line"><span class="comment"># save &quot;&quot;             # 关闭 RDB</span></span><br><span class="line">save 900 1           <span class="comment"># 15 分钟内，至少执行了 1 次写操作</span></span><br><span class="line">save 300 10         <span class="comment"># 5 分钟内，至少执行了 10 次写操作</span></span><br><span class="line">save 60 10000     <span class="comment"># 1 分钟内，至少执行了 10000 次写操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台备份进程出错时，主进程是否停止写入</span></span><br><span class="line">stop-writes-on-bgsave-error <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出的 RDB 文件是否压缩</span></span><br><span class="line">rdbcompression <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入 RDB 恢复时数据时，是否检验 RDB 的完整性</span></span><br><span class="line">rdbchecksum <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定 RDB 文件名</span></span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># RDB 文件存储路径</span></span><br><span class="line"><span class="built_in">dir</span> ./</span><br></pre></td></tr></table></figure>
+
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>RDB是某一时间点的快照，是一个紧凑的单文件，更多用于数据备份。可以按每小时或每日来备份，方便从不同的版本恢复数据。</li>
+<li>单文件容易传输到远程服务做故障恢复。</li>
+<li>RDB可以Fork子进程进行持久化，使Redis可以更好地处理用户请求。</li>
+<li>在大量数据的情况下，RDB相比较于AOF会更快的加载。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>如果Redis不及时保存RDB文件，会造成数据的丢失。例如系统突然断电，但未来得及保存数据。即使你设置更多的Save point，也无法保证100%的数据不丢失。</li>
+<li>RDB经常需要fork子进程去执行，但如果再大量数据的情况下，这个fork操作会非常耗CPU资源的。对比AOF虽然也是fork，但是它的数据保存处理是可以控制的，不需要全量保存。</li>
+</ul>
+<h4 id="数据快照"><a href="#数据快照" class="headerlink" title="数据快照"></a>数据快照</h4><ul>
+<li><ol>
+<li>Redis 调用 fork() ，同时拥有父进程和子进程。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>子进程将数据集写入到一个临时 RDB 文件中。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>当子进程完成对新 RDB 文件的写入时，Redis 用新 RDB 文件替换原来的 RDB 文件，并删除旧 RDB 文件。</li>
+</ol>
+</li>
+</ul>
+<h3 id="AOF（日志追加）"><a href="#AOF（日志追加）" class="headerlink" title="AOF（日志追加）"></a>AOF（日志追加）</h3><p>AOF 持久化记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数据集</p>
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">############################## APPEND ONLY MODE ###############################</span></span><br><span class="line"><span class="comment"># 是否开启AOF，默认关闭（no）</span></span><br><span class="line">appendonly <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定 AOF 文件名</span></span><br><span class="line">appendfilename appendonly.aof</span><br><span class="line"></span><br><span class="line"><span class="comment"># Redis支持三种不同的刷写模式：</span></span><br><span class="line"><span class="comment"># appendfsync always       # 同步持久化，每次发生数据变更会被立即记录到磁盘，性能差但数据完整性比较好</span></span><br><span class="line">appendfsync everysec       <span class="comment"># 异步操作，每秒记录，如果一秒钟内宕机，有数据丢失</span></span><br><span class="line"><span class="comment"># appendfsync no             # 将缓存回写的策略交给系统，linux 默认是30秒将缓冲区的数据回写硬盘的</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 正在导出 RDB 快照的过程中，要不要停止同步 AOF</span></span><br><span class="line">no-appendfsync-on-rewrite no </span><br><span class="line"></span><br><span class="line"><span class="comment"># AOF 文件大小比起上次重写时的大小，增长率100%时，重写</span></span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># AOF 文件至少超过64M时，重写</span></span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br></pre></td></tr></table></figure>
+
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>AOF可以设置 完全不同步、每秒同步、每次操作同步，默认是每秒同步。因为AOF是操作指令的追加，所以可以频繁的大量的同步。</li>
+<li>AOF文件是一个值追加日志的文件，即使服务宕机为写入完整的命令，也可以通过redis-check-aof工具修复这些问题。</li>
+<li>如果AOF文件过大，Redis会在后台自动地重写AOF文件。重写后会使AOF文件压缩到最小所需的指令集。</li>
+<li>AOF文件是有序保存数据库的所有写入操作，易读，易分析。即使如果不小心误操作数据库，也很容易找出错误指令，恢复到某个数据节点。例如不小心FLUSHALL，可以非常容易恢复到执行命令之前。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>相同数据量下，AOF的文件通常体积会比RDB大。因为AOF是存指令的，而RDB是所有指令的结果快照。但AOF在日志重写后会压缩一些空间。</li>
+<li>在大量写入和载入的时候，AOF的效率会比RDB低。因为大量写入，AOF会执行更多的保存命令，载入的时候也需要大量的重执行命令来得到最后的结果。RDB对此更有优势。</li>
+</ul>
+<h4 id="日志重写"><a href="#日志重写" class="headerlink" title="日志重写"></a>日志重写</h4><ul>
+<li><ol>
+<li>Redis 执行 fork() ，现在同时拥有父进程和子进程。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>子进程开始将新 AOF 文件的内容写入到临时文件。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>对于所有新执行的写入命令，父进程一边将它们累积到一个内存缓存中，一边将这些改动追加到现有 AOF 文件的末尾： 这样即使在重写的中途发生停机，现有的 AOF 文件也还是安全的。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>当子进程完成重写工作时，它给父进程发送一个信号，父进程在接收到信号之后，将内存缓存中的所有数据追加到新 AOF 文件的末尾。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>Redis 原子地用新文件替换旧文件，之后所有命令都会直接追加到新 AOF 文件的末尾。</li>
+</ol>
+</li>
+</ul>
+<h3 id="RDB与AOF比较"><a href="#RDB与AOF比较" class="headerlink" title="RDB与AOF比较"></a>RDB与AOF比较</h3><table>
+<thead>
+<tr>
+<th>&#x2F;</th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动优先级</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>恢复速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>数据安全性</td>
+<td>丢数据</td>
+<td>根据策略决定</td>
+</tr>
+<tr>
+<td>轻重</td>
+<td>重</td>
+<td>轻</td>
+</tr>
+</tbody></table>
+<h3 id="RDB与AOF选择"><a href="#RDB与AOF选择" class="headerlink" title="RDB与AOF选择"></a>RDB与AOF选择</h3><ul>
+<li>一般来说，不考虑硬盘大小，最安全的做法是RDB与AOF同时使用，即使AOF损坏无法修复，还可以用RDB来恢复数据。</li>
+<li>如果Redis的数据在你的服务中并不是必要的数据，例如只是当简单的缓存，没有缓存也不会造成缓存雪崩。说明数据的安全可靠性并不是首要考虑范围内，那么单独只使用RDB就可以了。</li>
+<li>不推荐单独使用AOF，因为AOF对于数据的恢复载入来说，比RDB慢。并且Redis官方也说明了，AOF有一个罕见的bug。出了问题无法很好的解决。所以使用AOF的时候，最好还是有RDB作为数据备份。</li>
+</ul>
+<h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><h3 id="三阶段"><a href="#三阶段" class="headerlink" title="三阶段"></a>三阶段</h3><ul>
+<li><code>开启</code> 以 MULTI 开始一个事务</li>
+<li><code>入队</code> 将多个命令入队到事务中，接到这些命令并不会立即执行，而是放到等待执行的事务队列里面</li>
+<li><code>执行</code> 由 EXEC 命令触发事务</li>
+</ul>
+<h3 id="三特性"><a href="#三特性" class="headerlink" title="三特性"></a>三特性</h3><ul>
+<li><code>单独的隔离操作</code> 事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。</li>
+<li><code>没有隔离级别的概念</code> 队列中的命令没有提交之前都不会实际的被执行，因为事务提交前任何指令都不会被实际执行，也就不存在 ”事务内的查询要看到事务里的更新，在事务外查询不能看到” 这个问题。</li>
+<li><code>不保证原子性</code> 同一个事务中如果有一条命令执行失败，其后的命令仍然会被执行，没有回滚。</li>
+</ul>
+<h3 id="正常执行"><a href="#正常执行" class="headerlink" title="正常执行"></a>正常执行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k1 v1</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k2 v2</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET k2</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; EXEC</span><br><span class="line">1) OK</span><br><span class="line">2) OK</span><br><span class="line">3) <span class="string">&quot;v2&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="放弃事务"><a href="#放弃事务" class="headerlink" title="放弃事务"></a>放弃事务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k1 v11</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; DISCARD</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET k1</span><br><span class="line"><span class="string">&quot;v1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事务中的错误"><a href="#事务中的错误" class="headerlink" title="事务中的错误"></a>事务中的错误</h3><h4 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h4><p>提交事务前出现错误，则全都不执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k3 v3</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k4</span><br><span class="line">(error) ERR wrong number of arguments <span class="keyword">for</span> <span class="string">&#x27;set&#x27;</span> <span class="built_in">command</span></span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; EXEC</span><br><span class="line">(error) EXECABORT Transaction discarded because of previous errors.</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET k3</span><br><span class="line">(nil)</span><br></pre></td></tr></table></figure>
+<h4 id="运行错误"><a href="#运行错误" class="headerlink" title="运行错误"></a>运行错误</h4><p>提交事务后出现错误，则部分执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; MULTI</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET k3 v3</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; INCR k1</span><br><span class="line">QUEUED</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; EXEC</span><br><span class="line">1) OK</span><br><span class="line">2) (error) ERR value is not an <span class="built_in">integer</span> or out of range</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET k3</span><br><span class="line"><span class="string">&quot;v3&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Watch监控"><a href="#Watch监控" class="headerlink" title="Watch监控"></a>Watch监控</h3><p>实现 INCR 函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 监视 key ，如果在事务执行之前 key 被其他命令所改动，那么事务将被打断</span></span><br><span class="line">WATCH mykey</span><br><span class="line"></span><br><span class="line">val = GET mykey</span><br><span class="line">val = val + 1</span><br><span class="line"></span><br><span class="line">MULTI</span><br><span class="line">SET mykey <span class="variable">$val</span></span><br><span class="line">EXEC</span><br></pre></td></tr></table></figure>
+
+<!-- ## Redis复制
+- 主从复制，主机数据更新后根据配置和策略，自动同步到备机的master/slaver机制，Master以写为主，Slave以读为主。
+
+### 建立复制
+- <span>1. </span>在 `redis.conf` 文件中配置 `slaveof <masterip> <masterport>` 然后指定该配置文件启动Redis生效。
+- <span>2. </span>在 `redis-server` 启动命令后加上 `--slaveof <masterip> <masterport>` 启动生效。
+- <span>3. </span>直接使用 `slaveof <masterip> <masterport>` 命令在从节点执行生效。
+
+### 复制原理
+- Slave 启动成功连接到 Master 后会发送一个 sync 命令
+- Master 接到命令启动后台的存盘进程，同时收集所有接收到的用于修改数据集命令，在后台进程执行完毕之后，Master 将传送整个数据文件到 Slave，以完成一次完全同步
+
+https://ningg.top/redis-lesson-8-redis-master-slave/
+【一主二从】
+实时动态复制
+读写分离
+主挂，从不断开连接，不反客为主
+从挂，则断开连接，可redis.conf配置SLAVEOF，重启后还是连接
+
+【薪火相传】
+主-从-从
+
+【反客为主】
+主挂，从1SLAVEOF NO ONE，从2还是连接主，但数据原由是从1 -->
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://redis.io/commands">Redis 官网命令</a></li>
+<li><a target="_blank" rel="noopener" href="http://doc.redisfans.com/">Redis 命令参考</a></li>
+<li><a target="_blank" rel="noopener" href="http://redisdoc.com/">Redis 命令参考</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Docker/Docker/" rel="prev" title="Docker">
+      <i class="fa fa-chevron-left"></i> Docker
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Redis常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key%EF%BC%88%E9%94%AE%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">Key（键）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">String（字符串）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hash%EF%BC%88%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">Hash（哈希表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List%EF%BC%88%E5%88%97%E8%A1%A8%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">List（列表）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set%EF%BC%88%E9%9B%86%E5%90%88%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">Set（集合）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet%EF%BC%88%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">SortedSet（有序集合）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connection%EF%BC%88%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">Connection（连接）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Server%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">Server（服务器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction%EF%BC%88%E4%BA%8B%E5%8A%A1%EF%BC%89"><span class="nav-number">1.9.</span> <span class="nav-text">Transaction（事务）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">Redis持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BF%AB%E7%85%A7%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">RDB（数据快照）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.1.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">2.1.3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BF%AB%E7%85%A7"><span class="nav-number">2.1.4.</span> <span class="nav-text">数据快照</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF%EF%BC%88%E6%97%A5%E5%BF%97%E8%BF%BD%E5%8A%A0%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">AOF（日志追加）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E9%87%8D%E5%86%99"><span class="nav-number">2.2.4.</span> <span class="nav-text">日志重写</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB%E4%B8%8EAOF%E6%AF%94%E8%BE%83"><span class="nav-number">2.3.</span> <span class="nav-text">RDB与AOF比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDB%E4%B8%8EAOF%E9%80%89%E6%8B%A9"><span class="nav-number">2.4.</span> <span class="nav-text">RDB与AOF选择</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BA%8B%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">Redis事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%98%B6%E6%AE%B5"><span class="nav-number">3.1.</span> <span class="nav-text">三阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%89%B9%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">三特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E6%89%A7%E8%A1%8C"><span class="nav-number">3.3.</span> <span class="nav-text">正常执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BE%E5%BC%83%E4%BA%8B%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">放弃事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">3.5.</span> <span class="nav-text">事务中的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E9%94%99%E8%AF%AF"><span class="nav-number">3.5.1.</span> <span class="nav-text">语法错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E9%94%99%E8%AF%AF"><span class="nav-number">3.5.2.</span> <span class="nav-text">运行错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Watch%E7%9B%91%E6%8E%A7"><span class="nav-number">3.6.</span> <span class="nav-text">Watch监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Catnip"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Catnip</p>
+  <div class="site-description" itemprop="description">度过大难, 将有大成, 继续努力, 终成大器.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>
+      RSS
+    </a>
+  </div>
+
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/catnip-5" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;catnip-5" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1007331304&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;1007331304&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=catnip.h.y@gmail.com" title="E-mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;catnip.h.y@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!--
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Catnip</span>
+</div>
+
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  
+	<script type="text/javascript" src="/js/cursor/fireworks.js"></script>
+  
+
+
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon_32.png">
+  <link rel="mask-icon" href="/images/icons/icon_512.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hannotate SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"catnip-5.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"dimmer":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JVM参数类型标配参数 (了解) -version -help -showversion  1234~  java -version   java version &quot;1.8.0_201&quot;   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)   Java HotSpot(TM) 64-Bit Server VM (bui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GC调优">
+<meta property="og:url" content="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/index.html">
+<meta property="og:site_name" content="Catnip">
+<meta property="og:description" content="JVM参数类型标配参数 (了解) -version -help -showversion  1234~  java -version   java version &quot;1.8.0_201&quot;   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)   Java HotSpot(TM) 64-Bit Server VM (bui">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/JVM%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8.png">
+<meta property="og:image" content="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/GC%E6%97%A5%E5%BF%97.png">
+<meta property="article:published_time" content="2019-07-24T02:22:28.000Z">
+<meta property="article:modified_time" content="2022-04-18T14:36:34.161Z">
+<meta property="article:author" content="Catnip">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/JVM%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8.png">
+
+<link rel="canonical" href="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>GC调优 | Catnip</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Catnip" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Catnip</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<div id="hitokoto" style="text-align: center;padding: 5px 0px 20px 0px;"></div>
+
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = "" + data.hitokoto + "  来自于 " + data.from;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+</script>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GC调优
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-24 10:22:28" itemprop="dateCreated datePublished" datetime="2019-07-24T10:22:28+08:00">2019-07-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 22:36:34" itemprop="dateModified" datetime="2022-04-18T22:36:34+08:00">2022-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="JVM参数类型"><a href="#JVM参数类型" class="headerlink" title="JVM参数类型"></a>JVM参数类型</h2><h3 id="标配参数-了解"><a href="#标配参数-了解" class="headerlink" title="标配参数 (了解)"></a>标配参数 (了解)</h3><ul>
+<li><code>-version</code></li>
+<li><code>-help</code></li>
+<li><code>-showversion</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~  java -version</span><br><span class="line">   java version <span class="string">&quot;1.8.0_201&quot;</span></span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="X参数-了解"><a href="#X参数-了解" class="headerlink" title="X参数 (了解)"></a>X参数 (了解)</h3><ul>
+<li><code>-Xint</code> 解释执行</li>
+<li><code>-Xcomp</code> 第一次使用就编译成本地代码</li>
+<li><code>-Xmixed</code> 混合模式</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~  java -version</span><br><span class="line">   java version <span class="string">&quot;1.8.0_201&quot;</span></span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)</span><br><span class="line">   </span><br><span class="line">~  java -Xint -version</span><br><span class="line">   java version <span class="string">&quot;1.8.0_201&quot;</span></span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, interpreted mode)</span><br><span class="line">   </span><br><span class="line">~  java -Xcomp -version</span><br><span class="line">   java version <span class="string">&quot;1.8.0_201&quot;</span></span><br><span class="line">   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)</span><br><span class="line">   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, compiled mode)</span><br></pre></td></tr></table></figure>
+
+<h3 id="XX参数"><a href="#XX参数" class="headerlink" title="XX参数"></a>XX参数</h3><ul>
+<li>Boolean类型：<code>-XX:+或者-某个属性值</code> ，+表示开启，-表示关闭</li>
+<li>KV设值类型：<code>-XX:属性key=属性值value</code></li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">~  <span class="attribute">jps</span> -l</span><br><span class="line">   <span class="attribute">74019</span> org.jetbrains.jps.cmdline.Launcher</span><br><span class="line">   <span class="attribute">67749</span> org.jetbrains.idea.maven.server.RemoteMavenServer</span><br><span class="line">   <span class="attribute">74020</span> com.example.demo.gc.HelloGC</span><br><span class="line">   <span class="attribute">67718</span></span><br><span class="line">   <span class="attribute">74024</span> sun.tools.jps.Jps</span><br><span class="line">   </span><br><span class="line">~  <span class="attribute">jinfo</span> -flag UseSerialGC <span class="number">74020</span></span><br><span class="line">   -<span class="attribute">XX</span>:-UseSerialGC</span><br></pre></td></tr></table></figure>
+
+<h2 id="JVM参数列表"><a href="#JVM参数列表" class="headerlink" title="JVM参数列表"></a>JVM参数列表</h2><p><img src="/JVM/GC%E8%B0%83%E4%BC%98/JVM%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8.png" alt="JVM参数列表"></p>
+<h2 id="GC日志"><a href="#GC日志" class="headerlink" title="GC日志"></a>GC日志</h2><p><img src="/JVM/GC%E8%B0%83%E4%BC%98/GC%E6%97%A5%E5%BF%97.png" alt="GC日志"></p>
+<h2 id="GC优化策略"><a href="#GC优化策略" class="headerlink" title="GC优化策略"></a>GC优化策略</h2><h3 id="降低Full-GC执行频率"><a href="#降低Full-GC执行频率" class="headerlink" title="降低Full GC执行频率"></a>降低Full GC执行频率</h3><ul>
+<li>可选方案：<ul>
+<li><p>1.&amp;nbsp;增大Old</p>
+<ul>
+<li>在不放大Heap的情况下，可能会造成一些问题</li>
+<li>放大Heap</li>
+</ul>
+</li>
+<li><p>2.&amp;nbsp;尽可能减少从new晋升到Old的对象</p>
+<ul>
+<li>控制晋升年龄阀值</li>
+<li>增大救助空间</li>
+</ul>
+</li>
+<li><p>3.&amp;nbsp;优化系统性能</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="降低Full-GC暂停时间"><a href="#降低Full-GC暂停时间" class="headerlink" title="降低Full GC暂停时间"></a>降低Full GC暂停时间</h3><ul>
+<li>可选方案：<ul>
+<li><p>1.&amp;nbsp;减少Heap</p>
+</li>
+<li><p>2.&amp;nbsp;GC换成CMS</p>
+</li>
+<li><p>3.&amp;nbsp;升级或增加CPU</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="降低Minor-GC执行频率"><a href="#降低Minor-GC执行频率" class="headerlink" title="降低Minor GC执行频率"></a>降低Minor GC执行频率</h3><ul>
+<li>可选方案：<ul>
+<li><p>1.&amp;nbsp;增大新生代</p>
+<ul>
+<li>有可能造成Full GC频繁</li>
+</ul>
+</li>
+<li><p>2.&amp;nbsp;优化系统性能，减少每次请求的内存消耗量</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="降低Minor-GC暂停时间"><a href="#降低Minor-GC暂停时间" class="headerlink" title="降低Minor GC暂停时间"></a>降低Minor GC暂停时间</h3><ul>
+<li>可选方案：<ul>
+<li><p>1.&amp;nbsp;减少新生代</p>
+<ul>
+<li>有可能造成new晋升到Old的对象增加</li>
+</ul>
+</li>
+<li><p>2.&amp;nbsp;增加或升级CPU</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="性能监控工具"><a href="#性能监控工具" class="headerlink" title="性能监控工具"></a>性能监控工具</h2><ul>
+<li>命令行工具：<code>jps</code>、<code>jstat</code>、<code>jinfo</code>、<code>jmap</code>、<code>jhat</code>、<code>jstack</code></li>
+<li>启动远程工具：<code>jstatd</code>、<code>jmx</code></li>
+<li>图形化工具：<code>jconsole</code>、<code>jvisualvm</code>、<code>MAT</code></li>
+<li>实时调试：<code>Btrace</code></li>
+</ul>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><h4 id="jps"><a href="#jps" class="headerlink" title="jps"></a><strong>jps</strong></h4><ul>
+<li>显示指定系统内所有HotSpot虚拟机进程</li>
+<li>命令格式：<code>jps [options] [hostid]</code></li>
+<li>参数选项：<ul>
+<li><code>[options]</code>：<ul>
+<li><strong>-q：</strong>只输出LVMID，省略主类名称</li>
+<li><strong>-m：</strong>输出虚拟机进程启动时传递给主类main()函数的参数</li>
+<li><strong>-l：</strong>输出主类的全名，如果进程执行的是jar，输出jar路径</li>
+<li><strong>-v：</strong>输出虚拟机进程启动时JVM参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a><strong>jstat</strong></h4><ul>
+<li>虚拟机统计信息监视工具</li>
+<li>命令格式：<code>jstat &lt;option&gt; [-t] [-h&lt;lines&gt;] &lt;vmid&gt; [&lt;interval&gt; [&lt;count&gt;]]</code></li>
+<li>参数选项：<ul>
+<li><code>[-t]</code>：在第一列显示自JVM启动以来的时间戳</li>
+<li><code>[-h&lt;lines&gt;]</code>：每隔几行输出标题</li>
+<li><code>[&lt;interval&gt;]</code>：连续输出的时间间隔 (单位：s，ms)</li>
+<li><code>[&lt;count&gt;]</code>：连续输出的次数</li>
+<li><code>&lt;option&gt;</code>：<ul>
+<li><strong>-class：</strong>监视类装载、卸载数量、总空间及类装载所消耗的时间</li>
+<li><strong>-gc：</strong>监视java堆状况，包括新生代、老年代、永久代等的容量、已用空间、GC时间合计等信息</li>
+<li><strong>-gccapacity：</strong>监视内容与-gc基本相同，但输出主要关注java堆各个区域使用到的最大、最小空间</li>
+<li><strong>-gcutil：</strong>监视内容与-gc基本相同，但输出主要关注已使用空间占总空间的百分比</li>
+<li><strong>-gccause    ：</strong>监视内容与-gcutil基本相同，但是会额外输出导致上一次GC产生的原因</li>
+<li><strong>-gcnew：</strong>监视新生代GC状况</li>
+<li><strong>-gcnewcapacity：</strong>监视内容与-gcnew基本相同，输出主要关注使用到的最大、最小空间</li>
+<li><strong>-gcold：</strong>监视老年代GC状况</li>
+<li><strong>-gcoldcapacity：</strong>监视内容与-gcold基本相同，输出主要关注使用到的最大、最小空间</li>
+<li><strong>-gcpermcapacity：</strong>输出永久代使用到的最大、最小空间</li>
+<li><strong>-compiler：</strong>输出JIT编译过的方法、耗时等信息</li>
+<li><strong>-printcompilation：</strong>输出已经被JIT编译的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a><strong>jinfo</strong></h4><ul>
+<li>实时的查看和调整虚拟机的各项参数</li>
+<li>命令格式：<code>jinfo [option] &lt;vmid&gt;</code></li>
+<li>参数选项：<ul>
+<li><code>[options]</code>：<ul>
+<li><strong>-flag &lt;name&gt;：</strong>显示JVM某参数值</li>
+<li><strong>-flag [+ | -]&lt;name&gt;：</strong>开启关闭JVM某参数</li>
+<li><strong>-flag &lt;name&gt;&#x3D;&lt;value&gt;：</strong>设置JVM某参数的值</li>
+<li><strong>-flags：</strong>显示所有的参数</li>
+<li><strong>-sysprops：</strong>显示系统参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a><strong>jmap</strong></h4><ul>
+<li>生成虚拟机的内存转储快照（heapdump）文件</li>
+<li>命令格式：<code>jmap [options] &lt;vmid&gt;</code></li>
+<li>参数选项：<ul>
+<li><code>[options]</code>：<ul>
+<li><strong>-dump：</strong>生成Java堆转储快照。格式为：-dump:[live,]format&#x3D;b,file&#x3D;&lt;filename&gt;，live表示指明是否只dump出存活的对象；format指定输出格式；file指定文件名</li>
+<li><strong>-finalizerinfo：</strong>显示在F-Queue中等待Finalizer线程执行finalize()方法的对象。</li>
+<li><strong>-heap：</strong>显示Java堆详细信息，如使用哪种回收器、参数配置、分代状况等</li>
+<li><strong>-histo：</strong>显示堆中对象统计信息，包括类、实例数量和合计容量</li>
+<li><strong>-permstat：</strong>以ClassLoader为统计口径显示永久代内存状态</li>
+<li><strong>-F：</strong>当虚拟机进程对-dump选项没有响应时，可使用这个选项强制生成dump快照</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a><strong>jhat</strong></h4><ul>
+<li>分析jmap生成的文件，建立一个HTTP&#x2F;HTML服务器，在浏览器上查看分析结果</li>
+<li>命令格式：<code>jhat [-stack &lt;bool&gt;] [-refs &lt;bool&gt;] [-port &lt;port&gt;] [-baseline &lt;file&gt;] [-debug &lt;int&gt;] &lt;file&gt;</code></li>
+<li>参数选项：<ul>
+<li><code>[-J&lt;flag&gt;]</code>：jhat命令会启动一个JVM来执行，可以在启动时传入一些参数。如：-J-Xmx512M</li>
+<li><code>[-stack &lt;bool&gt;]</code>：关闭跟踪对象分配调用堆栈，默认值是true</li>
+<li><code>[-refs &lt;bool&gt;]</code>：关闭对象的引用的跟踪，默认为true</li>
+<li><code>[-port &lt;port&gt;]</code>：设置HTTP Server端口号，默认值 7000</li>
+<li><code>[-exclude &lt;file&gt;]</code>：指定对象查询时需要排除的数据成员列表文件</li>
+<li><code>[-baseline &lt;file&gt;]</code>：指定基准堆转储。在具有相同的对象ID两个堆转储对象被标记为不是新对象。这是用于比较两个不同的堆转储有用</li>
+<li><code>[-debug &lt;int&gt;]</code>：设置debug级别，0级表示没有调试输出。值越大则表示输出更详细的 debug 信息</li>
+</ul>
+</li>
+</ul>
+<h4 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a><strong>jstack</strong></h4><ul>
+<li>生成当前时刻线程快照，主要⽬的是定位线程出现⻓时间停顿的原因，如线程间死锁、死循环等问题</li>
+<li>命令格式：<code>jstack [options] &lt;vmid&gt;</code></li>
+<li>参数选项：<ul>
+<li><code>[options]</code>：<ul>
+<li><strong>-F：</strong>当正常输出请求不被响应时，强制输出线程堆栈</li>
+<li><strong>-l：</strong>除堆栈外，显示关于锁的附加信息</li>
+<li><strong>-m：</strong>如果调用到本地方法的话，可以显示C&#x2F;C++的堆栈</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/java.html">JDK8 Win官网文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html">JDK8 Linux&#x2F;OS官网文档</a></li>
+<li><a target="_blank" rel="noopener" href="http://xxfox.perfma.com/">XXFOX</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.slideserve.com/abba/jvm">JVM优化入门</a></li>
+<li><a target="_blank" rel="noopener" href="http://calvin1978.blogcn.com/articles/jvmoption-7.html">JVM参数推荐</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c82c0a8b857f">JVM性能监控-命令行工具</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/JVM/GC%E6%9C%BA%E5%88%B6/" rel="prev" title="GC机制">
+      <i class="fa fa-chevron-left"></i> GC机制
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/JVM/OOM%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8/" rel="next" title="OOM常见异常">
+      OOM常见异常 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">JVM参数类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E9%85%8D%E5%8F%82%E6%95%B0-%E4%BA%86%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">标配参数 (了解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#X%E5%8F%82%E6%95%B0-%E4%BA%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">X参数 (了解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XX%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">XX参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">JVM参数列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC%E6%97%A5%E5%BF%97"><span class="nav-number">3.</span> <span class="nav-text">GC日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="nav-number">4.</span> <span class="nav-text">GC优化策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E4%BD%8EFull-GC%E6%89%A7%E8%A1%8C%E9%A2%91%E7%8E%87"><span class="nav-number">4.1.</span> <span class="nav-text">降低Full GC执行频率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E4%BD%8EFull-GC%E6%9A%82%E5%81%9C%E6%97%B6%E9%97%B4"><span class="nav-number">4.2.</span> <span class="nav-text">降低Full GC暂停时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E4%BD%8EMinor-GC%E6%89%A7%E8%A1%8C%E9%A2%91%E7%8E%87"><span class="nav-number">4.3.</span> <span class="nav-text">降低Minor GC执行频率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E4%BD%8EMinor-GC%E6%9A%82%E5%81%9C%E6%97%B6%E9%97%B4"><span class="nav-number">4.4.</span> <span class="nav-text">降低Minor GC暂停时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">性能监控工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7"><span class="nav-number">5.1.</span> <span class="nav-text">命令行工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jps"><span class="nav-number">5.1.1.</span> <span class="nav-text">jps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jstat"><span class="nav-number">5.1.2.</span> <span class="nav-text">jstat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jinfo"><span class="nav-number">5.1.3.</span> <span class="nav-text">jinfo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jmap"><span class="nav-number">5.1.4.</span> <span class="nav-text">jmap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jhat"><span class="nav-number">5.1.5.</span> <span class="nav-text">jhat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jstack"><span class="nav-number">5.1.6.</span> <span class="nav-text">jstack</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Catnip"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Catnip</p>
+  <div class="site-description" itemprop="description">度过大难, 将有大成, 继续努力, 终成大器.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>
+      RSS
+    </a>
+  </div>
+
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/catnip-5" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;catnip-5" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1007331304&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;1007331304&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=catnip.h.y@gmail.com" title="E-mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;catnip.h.y@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!--
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Catnip</span>
+</div>
+
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  
+	<script type="text/javascript" src="/js/cursor/fireworks.js"></script>
+  
+
+
+</body>
+</html>

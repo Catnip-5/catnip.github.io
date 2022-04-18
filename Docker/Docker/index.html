@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon_32.png">
+  <link rel="mask-icon" href="/images/icons/icon_512.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hannotate SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"catnip-5.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"dimmer":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content=".h4{     font-size: 16px;     color: #2c3e50; }   Docker简介Docker是什么 解决了运行环境和配置问题软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="https://catnip-5.github.io/Docker/Docker/index.html">
+<meta property="og:site_name" content="Catnip">
+<meta property="og:description" content=".h4{     font-size: 16px;     color: #2c3e50; }   Docker简介Docker是什么 解决了运行环境和配置问题软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://catnip-5.github.io/Docker/Docker/Docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="https://catnip-5.github.io/Docker/Docker/Docker%E5%91%BD%E4%BB%A4.png">
+<meta property="article:published_time" content="2019-10-01T01:07:11.000Z">
+<meta property="article:modified_time" content="2022-04-18T14:34:32.656Z">
+<meta property="article:author" content="Catnip">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://catnip-5.github.io/Docker/Docker/Docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E6%AF%94.png">
+
+<link rel="canonical" href="https://catnip-5.github.io/Docker/Docker/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Docker | Catnip</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Catnip" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Catnip</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<div id="hitokoto" style="text-align: center;padding: 5px 0px 20px 0px;"></div>
+
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = "" + data.hitokoto + "  来自于 " + data.from;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+</script>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Docker/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-01 09:07:11" itemprop="dateCreated datePublished" datetime="2019-10-01T09:07:11+08:00">2019-10-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 22:34:32" itemprop="dateModified" datetime="2022-04-18T22:34:32+08:00">2022-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <style>
+.h4{
+    font-size: 16px;
+    color: #2c3e50;
+}
+</style>
+
+<h2 id="Docker简介"><a href="#Docker简介" class="headerlink" title="Docker简介"></a>Docker简介</h2><h3 id="Docker是什么"><a href="#Docker是什么" class="headerlink" title="Docker是什么"></a>Docker是什么</h3><ul>
+<li>解决了运行环境和配置问题软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Docker理念"><a href="#Docker理念" class="headerlink" title="Docker理念"></a>Docker理念</h3><ul>
+<li>Docker的主要目标是“Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到<code>“一次封装，到处运行”</code></li>
+</ul>
+<h3 id="Docker作用"><a href="#Docker作用" class="headerlink" title="Docker作用"></a>Docker作用</h3><ul>
+<li>更高效的利用系统资源</li>
+<li>更快速的启动时间</li>
+<li>一致的运行环境</li>
+<li>持续交付和部署</li>
+<li>更轻松的迁移</li>
+<li>更轻松的维护和扩展</li>
+</ul>
+<h3 id="Docker与虚拟机对比"><a href="#Docker与虚拟机对比" class="headerlink" title="Docker与虚拟机对比"></a>Docker与虚拟机对比</h3><p><img src="/Docker/Docker/Docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E6%AF%94.png" alt="Docker与虚拟机对比"></p>
+<p> | 虚拟机（VM） | Docker容器<br>– | – | –<br>操作系统 | 宿主机OS上运行虚拟机OS | 与宿主机共享OS<br>存储大小 | 镜像庞大（vmdk,vdi等） | 硬件小，便于存储与传输<br>运行性能 | 操作系统额外的CPU,内存消耗 | 几乎无额外性能损失<br>移植性 | 笨重，与虚拟机耦合度高 | 轻便，灵活，适用于Linux<br>硬件亲和性 | 面向硬件运维者 | 面向软件开发者<br>部署速度 | 较慢，10s以上 | 快速，秒级</p>
+<h2 id="Docker基本概念"><a href="#Docker基本概念" class="headerlink" title="Docker基本概念"></a>Docker基本概念</h2><ul>
+<li><code>镜像 (Image)</code> 镜像就是一个<code>只读</code>的模板。镜像可以用来创建 Docker 容器，<code>一个镜像可以创建很多容器</code></li>
+<li><code>容器 (Container)</code> Docker利用容器独立运行的一个或一组应用。<code>容器是用镜像创建的运行实例</code></li>
+<li><code>仓库 (Repository)</code> 仓库是<code>集中存放镜像</code>文件的场所</li>
+</ul>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/install/linux/docker-ce/centos/">Docker 安装</a></li>
+</ul>
+<h2 id="Docker镜像加速"><a href="#Docker镜像加速" class="headerlink" title="Docker镜像加速"></a>Docker镜像加速</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/install/mirror.html">Docker 镜像加速</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://registry.docker-cn.com&quot;</span>,<span class="string">&quot;http://hub-mirror.c.163.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h2><p><img src="/Docker/Docker/Docker%E5%91%BD%E4%BB%A4.png" alt="Docker命令"></p>
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><ul>
+<li><code>docker version</code> </li>
+<li><code>docker info</code> </li>
+<li><code>docker --help</code></li>
+</ul>
+<h3 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h3><div class="h4">列出镜像</div>
+- 命令格式：`docker images [OPTIONS] [REPOSITORY[:TAG]]`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-a：**列出本地所有镜像（含中间映像层）
+        - **-q：**只显示镜像ID
+        - **--no-trunc：**显示完整的镜像信息
+        - **--digests：**显示镜像的摘要信息
+
+<div class="h4">搜索镜像</div>
+- 命令格式：`docker search [OPTIONS] TERM` 
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-s：**列出收藏数不小于指定值的镜像
+        - **--no-trunc：**显示完整的镜像信息
+        - **--automated：**只列出automated build类型的镜像
+
+<div class="h4">拉取镜像</div>
+- 命令格式：`docker pull [OPTIONS] NAME[:TAG|@DIGEST]` 
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-a：**拉取所有 tagged 镜像
+        
+<div class="h4">删除镜像</div>
+- 命令格式：`docker rmi [OPTIONS] IMAGE [IMAGE...]` 
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-f：**强制删除
+- 案例：
+    - **docker rmi -f 镜像ID：**删除单个
+    - **docker rmi -f 镜像1:TAG 镜像2:TAG：**删除多个
+    - **docker rmi -f $(docker images -qa)：**删除全部
+    
+<div class="h4">容器生成新镜像</div>
+- 命令格式：`docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-a：**提交的镜像作者
+        - **-m：**提交时的说明文字
+        - **-p：**在commit时，将容器暂停
+        - **-c：**使用Dockerfile指令来创建镜像
+        
+<div class="h4">DockerFile构建新镜像</div>
+- 命令格式：`docker build [OPTIONS] PATH | URL`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-f：**指定Dockerfile文件路径
+        - **-t：**设置镜像名字，镜像名[:TAG]
+        - **--build-arg=[]：**设置镜像创建时的变量
+        
+<h3 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h3><div class="h4">新建并启动容器</div>
+- 命令格式：`docker run [OPTIONS] IMAGE [COMMAND] [ARG...]` 
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-i：**以交互模式运行容器，通常与 -t 同时使用
+        - **-t：**为容器重新分配一个伪输入终端，通常与 -i 同时使用
+        - **-p：**指定端口映射，格式为：主机端口:容器端口
+        - **-P：**随机端口映射，容器内部端口随机映射到主机的高端口
+        - **-d：**后台运行容器，并返回容器ID，也即启动守护式容器
+        - **-e：**设置环境变量
+        - **-v：**绑定数据卷，格式为：主机目录:容器目录
+        - **--privileged：**授予权限
+        - **--volumes-from：**绑定数据卷容器
+        - **--name="容器新名称"：**为容器指定一个名称
+        
+<div class="h4">列出容器</div>
+- 命令格式：`docker ps [OPTIONS]` 
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-a：**显示所有的容器，包括未运行的
+        - **-l：**显示最近创建的容器 
+        - **-n：**列出最近创建的n个容器
+        - **-q：**静默模式，只显示容器编号
+        - **--no-trunc：**不截断输出
+       
+<div class="h4">启动容器</div>
+- 命令格式：`docker start [OPTIONS] CONTAINER [CONTAINER...]`
+
+<div class="h4">重启容器</div>
+- 命令格式：`docker restart [OPTIONS] CONTAINER [CONTAINER...]`
+ 
+<div class="h4">停止容器</div>
+- 命令格式：`docker stop [OPTIONS] CONTAINER [CONTAINER...]`
+
+<div class="h4">强制停止容器</div>
+- 命令格式：`docker kill [OPTIONS] CONTAINER [CONTAINER...]`
+
+<div class="h4">删除容器</div>
+- 命令格式：`docker rm [OPTIONS] CONTAINER [CONTAINER...]`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-f：**通过SIGKILL信号强制删除一个运行中的容器
+        - **-l：**移除容器间的网络连接，而非容器本身
+        - **-v：**删除与容器关联的卷
+- 案例：
+    - **docker rm -f $(docker ps -qa)：**删除全部
+    - **docker ps -qa | xargs docker rm：**删除全部
+    
+<div class="h4">进入容器</div>
+- 命令格式：`docker attach [OPTIONS] CONTAINER`连接到正在运行中的容器
+- 命令格式：`docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`在运行的容器中执行命令
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-i：**即使没有附加也保持STDIN 打开
+        - **-t：**分配一个伪终端
+        - **-d：**分离模式: 在后台运行
+- 案例：
+    - **docker attach 容器ID：**进入容器
+    - **docker exec -it 容器ID /bin/bash：**进入容器
+    - **docker exec -it 容器ID ls：**不进入容器，执行容器中命令
+
+<div class="h4">退出容器</div> 
+- 命令格式：`exit` 容器停止退出
+- 命令格式：`Ctrl + P + Q` 容器不停止退出
+  
+<div class="h4">容器与主机之间的数据拷贝</div>
+- 命令格式：`docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH`容器数据拷贝到主机
+- 命令格式：`docker cp [OPTIONS] SRC_PATH CONTAINER:DEST_PATH`主机数据拷贝到容器
+        
+<div class="h4">查看容器日志</div>
+- 命令格式：`docker logs [OPTIONS] CONTAINER`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-f：**跟踪日志输出
+        - **-t：**显示时间戳
+        - **--tail：**仅列出最新N条容器日志
+        - **--since：**显示某个开始时间的所有日志    
+
+<div class="h4">查看容器中运行的进程</div>
+- 命令格式：`docker top [OPTIONS] CONTAINER [ps OPTIONS]`
+ 
+<div class="h4">查看容器内部细节</div>
+- 命令格式：`docker inspect [OPTIONS] NAME|ID [NAME|ID...]`
+- 参数选项：
+    - `[OPTIONS] `：
+        - **-f：**指定返回值的模板文件
+        - **-s：**显示总的文件大小
+        - **--type：**指定类型返回JSON
+
+<h2 id="Docker容器数据卷"><a href="#Docker容器数据卷" class="headerlink" title="Docker容器数据卷"></a>Docker容器数据卷</h2><h3 id="数据卷是什么"><a href="#数据卷是什么" class="headerlink" title="数据卷是什么"></a>数据卷是什么</h3><ul>
+<li>数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：<ul>
+<li>数据卷 可以在容器之间共享和重用</li>
+<li>对 数据卷 的修改会立马生效</li>
+<li>对 数据卷 的更新，不会影响镜像</li>
+<li>数据卷 默认会一直存在，即使容器被删除</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据卷作用"><a href="#数据卷作用" class="headerlink" title="数据卷作用"></a>数据卷作用</h3><ul>
+<li>容器的持久化</li>
+<li>容器间继承 + 共享数据</li>
+</ul>
+<h3 id="数据卷（宿主机-x2F-容器）"><a href="#数据卷（宿主机-x2F-容器）" class="headerlink" title="数据卷（宿主机&#x2F;容器）"></a>数据卷（宿主机&#x2F;容器）</h3><h4 id="直接命令添加"><a href="#直接命令添加" class="headerlink" title="直接命令添加"></a>直接命令添加</h4><ul>
+<li><code>docker run -it -v /宿主机目录:/容器目录 镜像ID</code></li>
+</ul>
+<h4 id="DockerFile添加"><a href="#DockerFile添加" class="headerlink" title="DockerFile添加"></a>DockerFile添加</h4><ul>
+<li>编写DockerFile<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line">VOLUME [<span class="string">&quot;/dataVolumeContainer1&quot;</span>,<span class="string">&quot;/dataVolumeContainer2&quot;</span>]</span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure></li>
+<li>构建镜像<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -f /mydockerfile -t my/centos .</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="数据卷容器（容器-x2F-容器）"><a href="#数据卷容器（容器-x2F-容器）" class="headerlink" title="数据卷容器（容器&#x2F;容器）"></a>数据卷容器（容器&#x2F;容器）</h3><ul>
+<li><code>docker run -it --name 容器2 --volumes-from 容器1 镜像ID</code></li>
+</ul>
+<h2 id="DockerFile解析"><a href="#DockerFile解析" class="headerlink" title="DockerFile解析"></a>DockerFile解析</h2><h3 id="DockerFile是什么"><a href="#DockerFile是什么" class="headerlink" title="DockerFile是什么"></a>DockerFile是什么</h3><ul>
+<li>DockerFile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本</li>
+</ul>
+<h3 id="DockerFile大致执行流程"><a href="#DockerFile大致执行流程" class="headerlink" title="DockerFile大致执行流程"></a>DockerFile大致执行流程</h3><ul>
+<li>1）Docker从基础镜像运行一个容器</li>
+<li>2）执行一条指令并对容器做出修改</li>
+<li>3）执行类似docker commit的操作提交一个新的镜像层</li>
+<li>4）Docker再基于刚提交的镜像运行一个新容器</li>
+<li>5）执行DockerFile中的下一条指令直到所有指令都执行完成</li>
+</ul>
+<h3 id="DockerFile体系结构（保留字指令）"><a href="#DockerFile体系结构（保留字指令）" class="headerlink" title="DockerFile体系结构（保留字指令）"></a>DockerFile体系结构（保留字指令）</h3><ul>
+<li><code>FROM</code> 基础镜像，当前新镜像是基于哪个镜像，scratch是源镜像</li>
+<li><code>MAINTAINER</code> 镜像维护者的姓名和邮箱地址</li>
+<li><code>RUN</code> 容器构建时需要运行的命令</li>
+<li><code>EXPOSE</code> 当前容器对外暴露的端口</li>
+<li><code>WORKDIR</code> 指容器启动后默认进来的目录</li>
+<li><code>ENV</code> 构建镜像过程中设置的环境变量</li>
+<li><code>ADD</code> 将宿主机目录下的文件拷贝进镜像且自动处理URL和解压缩（拷贝 + 解压缩）</li>
+<li><code>CORY</code> 将宿主机目录下的文件拷贝进镜像（拷贝）</li>
+<li><code>VOLUME</code> 绑定数据卷</li>
+<li><code>CMD</code> 指定一个容器启动时要运行的命令，如有多个CMD只有最后一个生效（替换方式）</li>
+<li><code>ENTRYPOINT</code> 指定一个容器启动时要运行的命令（追加方式）</li>
+<li><code>ONBUILD</code> 当构建一个被继承的DockerFile时运行命令，父镜像在被子继承后父镜像的onbuild被触发</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/">Docker 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub 仓库</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.docker.org.cn/index.html">Docker 中文社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/introduction/what.html">Docker 从入门到实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://jiajially.gitbooks.io/dockerguide/content/index.html">Docker 简明教程</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Spring/Spring%EF%BC%9AAOP/" rel="prev" title="Spring：AOP">
+      <i class="fa fa-chevron-left"></i> Spring：AOP
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="next" title="Redis：基本使用">
+      Redis：基本使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">Docker简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">Docker是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E7%90%86%E5%BF%B5"><span class="nav-number">1.2.</span> <span class="nav-text">Docker理念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E4%BD%9C%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">Docker作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AF%B9%E6%AF%94"><span class="nav-number">1.4.</span> <span class="nav-text">Docker与虚拟机对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">Docker基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">Docker安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="nav-number">4.</span> <span class="nav-text">Docker镜像加速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Docker常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="nav-number">5.1.</span> <span class="nav-text">帮助命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">镜像命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.3.</span> <span class="nav-text">容器命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="nav-number">6.</span> <span class="nav-text">Docker容器数据卷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">6.1.</span> <span class="nav-text">数据卷是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%E4%BD%9C%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text">数据卷作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%EF%BC%88%E5%AE%BF%E4%B8%BB%E6%9C%BA-x2F-%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">数据卷（宿主机&#x2F;容器）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%91%BD%E4%BB%A4%E6%B7%BB%E5%8A%A0"><span class="nav-number">6.3.1.</span> <span class="nav-text">直接命令添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DockerFile%E6%B7%BB%E5%8A%A0"><span class="nav-number">6.3.2.</span> <span class="nav-text">DockerFile添加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%E5%AE%B9%E5%99%A8%EF%BC%88%E5%AE%B9%E5%99%A8-x2F-%E5%AE%B9%E5%99%A8%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">数据卷容器（容器&#x2F;容器）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DockerFile%E8%A7%A3%E6%9E%90"><span class="nav-number">7.</span> <span class="nav-text">DockerFile解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DockerFile%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">7.1.</span> <span class="nav-text">DockerFile是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DockerFile%E5%A4%A7%E8%87%B4%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">7.2.</span> <span class="nav-text">DockerFile大致执行流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DockerFile%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%EF%BC%88%E4%BF%9D%E7%95%99%E5%AD%97%E6%8C%87%E4%BB%A4%EF%BC%89"><span class="nav-number">7.3.</span> <span class="nav-text">DockerFile体系结构（保留字指令）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Catnip"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Catnip</p>
+  <div class="site-description" itemprop="description">度过大难, 将有大成, 继续努力, 终成大器.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>
+      RSS
+    </a>
+  </div>
+
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/catnip-5" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;catnip-5" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1007331304&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;1007331304&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=catnip.h.y@gmail.com" title="E-mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;catnip.h.y@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!--
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Catnip</span>
+</div>
+
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  
+	<script type="text/javascript" src="/js/cursor/fireworks.js"></script>
+  
+
+
+</body>
+</html>

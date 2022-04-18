@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon_32.png">
+  <link rel="mask-icon" href="/images/icons/icon_512.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hannotate SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"catnip-5.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"dimmer":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Bean相关 @Bean 声明当前方法的返回值为一个Bean @Scope 用于指定作用域 @Lazy 表示延迟初始化 @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring：常用注解汇总">
+<meta property="og:url" content="https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Catnip">
+<meta property="og:description" content="Bean相关 @Bean 声明当前方法的返回值为一个Bean @Scope 用于指定作用域 @Lazy 表示延迟初始化 @Primary 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-30T02:48:11.000Z">
+<meta property="article:modified_time" content="2022-04-18T15:04:09.195Z">
+<meta property="article:author" content="Catnip">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Spring：常用注解汇总 | Catnip</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Catnip" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Catnip</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<div id="hitokoto" style="text-align: center;padding: 5px 0px 20px 0px;"></div>
+
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = "" + data.hitokoto + "  来自于 " + data.from;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+</script>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring：常用注解汇总
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-30 10:48:11" itemprop="dateCreated datePublished" datetime="2019-08-30T10:48:11+08:00">2019-08-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-18 23:04:09" itemprop="dateModified" datetime="2022-04-18T23:04:09+08:00">2022-04-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Bean相关"><a href="#Bean相关" class="headerlink" title="Bean相关"></a>Bean相关</h2><ul>
+<li><code>@Bean</code> 声明当前方法的返回值为一个Bean</li>
+<li><code>@Scope</code> 用于指定作用域</li>
+<li><code>@Lazy</code> 表示延迟初始化</li>
+<li><code>@Primary</code> 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="声明Bean注解"><a href="#声明Bean注解" class="headerlink" title="声明Bean注解"></a>声明Bean注解</h3><ul>
+<li><code>@Component</code> 组件，没有明确的角色 </li>
+<li><code>@Controller</code> 应用在MVC层（控制层）</li>
+<li><code>@Service</code> 应用在Service层（业务逻辑层）</li>
+<li><code>@Repository</code> 应用在Dao层（数据访问层）</li>
+</ul>
+<h3 id="注入Bean注解"><a href="#注入Bean注解" class="headerlink" title="注入Bean注解"></a>注入Bean注解</h3><ul>
+<li><code>@Autowired</code> 由Spring提供，根据类型进行自动装配，如果组合@Qualifier使用将按名称进行装配</li>
+<li><code>@Resource</code> 由JSR-250提供，根据名称进行自动装配，使用需导入javax.annotation包</li>
+<li><code>@Inject</code> 由JSR-330提供，根据类型进行自动装配，如需按名称进行装配则需配合@Named使用，使用需导入javax.inject.Inject包</li>
+</ul>
+<h3 id="Bean的初始化和销毁注解"><a href="#Bean的初始化和销毁注解" class="headerlink" title="Bean的初始化和销毁注解"></a>Bean的初始化和销毁注解</h3><ul>
+<li><code>@PostConstruct</code> 用于指定初始化方法，在构造函数执行后执行</li>
+<li><code>@PreDestroy</code> 用于指定销毁方法，在Bean销毁之前执行</li>
+</ul>
+<h2 id="配置相关"><a href="#配置相关" class="headerlink" title="配置相关"></a>配置相关</h2><ul>
+<li><code>@Order</code> 调整配置类加载顺序，值越小优先级越高</li>
+<li><code>@Configuration</code> 声明当前类是一个配置类，相当于Spring的xml配置文件</li>
+<li><code>@ConfigurationProperties</code> 将Properties属性与一个Bean及其属性相关联</li>
+<li><code>@ComponentScan</code> 扫描该类所在的包下所有的声明类</li>
+</ul>
+<h3 id="注入注解"><a href="#注入注解" class="headerlink" title="注入注解"></a>注入注解</h3><ul>
+<li><code>@Value</code> 值注入，普通字符，SpEl表达式，配置文件属性值等</li>
+<li><code>@PropertySource</code> 加载Properties配置文件</li>
+<li><code>@ImportResource</code> 导入Xml配置文件</li>
+<li><code>@Import</code> 导入Bean到Spring容器</li>
+</ul>
+<h3 id="条件注解"><a href="#条件注解" class="headerlink" title="条件注解"></a>条件注解</h3><ul>
+<li><code>@ConditionalOnBean</code>     Spring容器中是否存在对应的实例</li>
+<li><code>@ConditionalOnMissingBean</code>     Spring容器中是否不存在对应的实例</li>
+<li><code>@ConditionalOnClass</code> 类加载器中是否存在对应的类</li>
+<li><code>@ConditionalOnMissingClass</code> 类加载器中是否不存在对应的类</li>
+<li><code>@ConditionalOnExpression</code> 判断 SpEL 表达式是否成立</li>
+<li><code>@ConditionalOnJava</code> 指定Java版本是否符合要求</li>
+<li><code>@ConditionalOnJndi</code> 在JNDI存在的条件下查找指定的位置</li>
+<li><code>@ConditionalOnSingleCandidate</code> Spring容器中是否存在且只存在一个对应的实例</li>
+<li><code>@ConditionalOnProperty</code> 应用环境中的属性是否存在</li>
+<li><code>@ConditionalOnResource</code> 是否存在指定的资源文件</li>
+<li><code>@ConditionalOnWebApplication</code> 应用程序是否是Web程序</li>
+<li><code>@ConditionalOnNotWebApplication</code> 应用程序是否非Web程序</li>
+<li><code>@Profile</code> 指定组件在哪个环境的情况下才能被注册到容器中</li>
+<li><code>@DependsOn</code> 控制Bean加载顺序，A 间接依赖 B，B未准备好，A无法访问</li>
+</ul>
+<h2 id="功能相关"><a href="#功能相关" class="headerlink" title="功能相关"></a>功能相关</h2><h3 id="AOP注解"><a href="#AOP注解" class="headerlink" title="AOP注解"></a>AOP注解</h3><ul>
+<li><code>@EnableAspectJAutoProxy</code> 开启对AspectJ自动代理的支持</li>
+<li><code>@Aspect</code>     声明该类是一个切面Bean</li>
+<li><code>@Before</code>     前置通知，在目标类的方法执行之前执行</li>
+<li><code>@After</code>     后置通知，在目标类的方法执行之后执行</li>
+<li><code>@AfterReturning</code>     返回通知，在正常执行后通知</li>
+<li><code>@AfterThrowing</code>    异常通知，在抛出异常后通知</li>
+<li><code>@Around</code>     环绕通知，在目标类的方法执行之前和之后执行</li>
+<li><code>@Pointcut</code> 切入点，用于定义通知类型，切面类的方法和切入点的表达式</li>
+</ul>
+<h3 id="事务注解"><a href="#事务注解" class="headerlink" title="事务注解"></a>事务注解</h3><ul>
+<li><code>@EnableTransactionManagement</code> 开启注解式事务的支持</li>
+<li><code>@Transactional</code> 用于声明事务</li>
+</ul>
+<h3 id="缓存注解"><a href="#缓存注解" class="headerlink" title="缓存注解"></a>缓存注解</h3><ul>
+<li><code>@EnableCaching</code> 开启注解式的缓存支持</li>
+<li><code>@CacheConfig</code> 用于配置该类中会用到的一些共用的缓存配置</li>
+<li><code>@Cacheable</code> 用于方法的返回值将被加入缓存。在查询时，会先从缓存中获取，若不存在才对数据库访问</li>
+<li><code>@CachePut</code> 用于数据新增和修改操作</li>
+<li><code>@CacheEvict</code> 用于删除操作，用来从缓存中移除相应数据</li>
+</ul>
+<h3 id="异步注解"><a href="#异步注解" class="headerlink" title="异步注解"></a>异步注解</h3><ul>
+<li><code>@EnableAsync</code> 开启对异步任务的支持</li>
+<li><code>@Async</code> 声明这是一个异步任务</li>
+</ul>
+<h3 id="定时任务注解"><a href="#定时任务注解" class="headerlink" title="定时任务注解"></a>定时任务注解</h3><ul>
+<li><code>@EnableScheduling</code> 开启对定时任务的支持</li>
+<li><code>@Scheduled</code> 声明这是一个定时任务。包含：cron 、fixDelay、fixRate等类型</li>
+</ul>
+<h2 id="测试相关"><a href="#测试相关" class="headerlink" title="测试相关"></a>测试相关</h2><ul>
+<li><code>@RunWith</code> Spring中通常用于对JUnit的支持</li>
+<li><code>@ContextConfiguration</code> 用于加载配置ApplicationContext</li>
+</ul>
+<h2 id="Enable-相关"><a href="#Enable-相关" class="headerlink" title="Enable*相关"></a>Enable*相关</h2><ul>
+<li><code>@EnableAspectJAutoProxy</code> 开启对AspectJ自动代理的支持</li>
+<li><code>@EnableAsync</code> 开启对异步任务的支持</li>
+<li><code>@EnableScheduling</code> 开启对定时任务的支持</li>
+<li><code>@EnableWebMvc</code> 开启Web MVC的配置支持</li>
+<li><code>@EnableConfigurationProperties</code> 开启对@ConfigurationProperties注解配置Bean的支持</li>
+<li><code>@EnableJpaRepositories</code> 开启对SpringData JPA Repository的支持</li>
+<li><code>@EnableTransactionManagement</code> 开启注解式事务的支持</li>
+<li><code>@EnableCaching</code> 开启注解式的缓存支持</li>
+</ul>
+<h2 id="SpringMVC相关"><a href="#SpringMVC相关" class="headerlink" title="SpringMVC相关"></a>SpringMVC相关</h2><h3 id="请求映射注解"><a href="#请求映射注解" class="headerlink" title="请求映射注解"></a>请求映射注解</h3><ul>
+<li><code>@RequestMapping</code> 用于映射 Http 请求，包括访问路径和参数</li>
+<li><code>@GetMapping</code> 用于映射 Http 请求的 Get 方法，获取信息</li>
+<li><code>@PostMapping</code> 用于映射 Http 请求的 Post 方法，保存信息</li>
+<li><code>@PutMapping</code> 用于映射 Http 请求的 Put 方法，更新信息</li>
+<li><code>@DeleteMapping</code> 用于映射 Http 请求的 Delete 方法，删除信息</li>
+<li><code>@PatchMapping</code> 用于映射 Http 请求的 Patch 方法，更新部分信息</li>
+<li><code>@RestController</code> 组合注解，@ResponseBody + @Controller</li>
+</ul>
+<h3 id="请求参数注解"><a href="#请求参数注解" class="headerlink" title="请求参数注解"></a>请求参数注解</h3><ul>
+<li><code>@PathVariable</code> 用于获取请求路径中的变量</li>
+<li><code>@RequestParam</code> 用于获取请求参数</li>
+<li><code>@RequestHeader</code> 用于获取请求头的信息</li>
+<li><code>@CookieValue</code> 用于获取客户端的Cookie中的信息</li>
+<li><code>@SessionAttribute</code> 用于获取服务端的Session中的信息</li>
+<li><code>@RequestPart</code> 用于获取文件之类的Multipart信息</li>
+<li><code>@RequestAttribute</code> 用于将请求中的属性(request attributes，是服务器放入的属性值)绑定到方法参数</li>
+<li><code>@RequestBody</code> 用于获取请求中的Body部分数据</li>
+<li><code>@ResponseBody</code> 用于将返回值放在Response内，而不是一个页面</li>
+<li><code>@InitBinder</code> 用于设置WebDataBinder，WebDataBinder用来自动绑定前台请求参数到Model中</li>
+<li><code>@SessionAttributes</code> 用于绑定HttpSession中的attribute对象的值，便于在方法中的参数里使用</li>
+<li><code>@ModelAttribute</code> 本来的作用是绑定键值对到Model里，在@ControllerAdvice中是让全局的@RequestMapping都能获得在此处设置的键值对</li>
+</ul>
+<h3 id="跨域请求注解"><a href="#跨域请求注解" class="headerlink" title="跨域请求注解"></a>跨域请求注解</h3><ul>
+<li><code>@CrossOrigin</code> 用于在Class和Method上支持跨域请求</li>
+</ul>
+<h3 id="全局处理注解"><a href="#全局处理注解" class="headerlink" title="全局处理注解"></a>全局处理注解</h3><ul>
+<li><code>@ExceptionHandler</code> 用于全局处理控制器里的异常</li>
+<li><code>@ControllerAdvice</code> 声明一个类来统一对所有@RequestMapping方法来做@ExceptionHandler、@InitBinder以及@ModelAttribute处理</li>
+<li><code>@RestControllerAdvice</code> 组合注解，@ResponseBody + @ControllerAdvice</li>
+<li><code>@ResponseStatus</code> 用于方法或者异常类返回的Http状态码</li>
+</ul>
+<h2 id="SpringJpa相关"><a href="#SpringJpa相关" class="headerlink" title="SpringJpa相关"></a>SpringJpa相关</h2><ul>
+<li><code>@Entity</code> 用于映射到数据库表</li>
+<li><code>@Table</code> 用于实体类映射的数据库表名</li>
+<li><code>@Id</code> 用于标注为数据库表的主键列</li>
+<li><code>@GeneratedValue</code> 用于标注主键的生成策略。通过 strategy 属性指定</li>
+<li><code>@Column</code> 用于实体属性与数据库表的列不同名时需要使用</li>
+<li><code>@Basic</code> 默认 Entity 类的属性的默认注解</li>
+<li><code>@Transient</code> 用于忽略该属性，不映射数据库表字段</li>
+<li><code>@Temporal</code> 用于定义 Date 类型的精度</li>
+</ul>
+<h2 id="SpringBoot相关"><a href="#SpringBoot相关" class="headerlink" title="SpringBoot相关"></a>SpringBoot相关</h2><ul>
+<li><code>@SpringBootApplication</code> SpringBoot的核心注解，主要作用是开启自动配置</li>
+<li><code>@EnableAutoConfiguration</code> 自动载入应用程序所需的所有Bean</li>
+<li><code>@AutoConfigureAfter</code> 在指定的自动配置类之后再配置</li>
+</ul>
+<h2 id="Lombok相关"><a href="#Lombok相关" class="headerlink" title="Lombok相关"></a>Lombok相关</h2><ul>
+<li><code>@Setter</code> 为属性提供 set 方法</li>
+<li><code>@Getter</code> 为属性提供 get 方法</li>
+<li><code>@NoArgsConstructor</code> 为类提供一个无参的构造方法</li>
+<li><code>@AllArgsConstructor</code> 为类提供一个全参的构造方法</li>
+<li><code>@Accessors</code> 为配置 get 和 set 方法的生成结果</li>
+<li><code>@Data</code> 为类提供所有属性的 get 和 set 方法，此外还提供了equals、canEqual、hashCode、toString方法</li>
+<li><code>@Log4j</code> 为类提供一个属性名为log 的 log4j 日志对象</li>
+<li><code>@Slf4j</code> 为类提供一个属性名为log 的 Slf4j 日志对象</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.oschina.net/uploads/doc/annotations/spring.html">Spring Project Annotations</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E8%B5%8B%E5%80%BC/" rel="prev" title="Spring：组件赋值">
+      <i class="fa fa-chevron-left"></i> Spring：组件赋值
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Spring/Spring%EF%BC%9AAOP/" rel="next" title="Spring：AOP">
+      Spring：AOP <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">Bean相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8EBean%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">声明Bean注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5Bean%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">注入Bean注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">Bean的初始化和销毁注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">配置相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">注入注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">条件注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%9B%B8%E5%85%B3"><span class="nav-number">3.</span> <span class="nav-text">功能相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.1.</span> <span class="nav-text">AOP注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">事务注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.3.</span> <span class="nav-text">缓存注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.4.</span> <span class="nav-text">异步注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.5.</span> <span class="nav-text">定时任务注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3"><span class="nav-number">4.</span> <span class="nav-text">测试相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enable-%E7%9B%B8%E5%85%B3"><span class="nav-number">5.</span> <span class="nav-text">Enable*相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC%E7%9B%B8%E5%85%B3"><span class="nav-number">6.</span> <span class="nav-text">SpringMVC相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84%E6%B3%A8%E8%A7%A3"><span class="nav-number">6.1.</span> <span class="nav-text">请求映射注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%B3%A8%E8%A7%A3"><span class="nav-number">6.2.</span> <span class="nav-text">请求参数注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E6%B3%A8%E8%A7%A3"><span class="nav-number">6.3.</span> <span class="nav-text">跨域请求注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%A4%84%E7%90%86%E6%B3%A8%E8%A7%A3"><span class="nav-number">6.4.</span> <span class="nav-text">全局处理注解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringJpa%E7%9B%B8%E5%85%B3"><span class="nav-number">7.</span> <span class="nav-text">SpringJpa相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E7%9B%B8%E5%85%B3"><span class="nav-number">8.</span> <span class="nav-text">SpringBoot相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lombok%E7%9B%B8%E5%85%B3"><span class="nav-number">9.</span> <span class="nav-text">Lombok相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Catnip"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Catnip</p>
+  <div class="site-description" itemprop="description">度过大难, 将有大成, 继续努力, 终成大器.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>
+      RSS
+    </a>
+  </div>
+
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/catnip-5" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;catnip-5" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1007331304&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;1007331304&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=catnip.h.y@gmail.com" title="E-mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;catnip.h.y@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!--
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Catnip</span>
+</div>
+
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  
+	<script type="text/javascript" src="/js/cursor/fireworks.js"></script>
+  
+
+
+</body>
+</html>

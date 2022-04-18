@@ -9,13 +9,460 @@
     <atom:link href="https://catnip-5.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>度过大难, 将有大成, 继续努力, 终成大器.</description>
-    <pubDate>Sun, 17 Apr 2022 15:47:02 GMT</pubDate>
+    <pubDate>Mon, 18 Apr 2022 15:29:28 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>设计模式_七大原则</title>
-      <link>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/</link>
-      <guid>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/</guid>
+      <title>Redis：基本使用</title>
+      <link>https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
+      <guid>https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
+      <pubDate>Sun, 20 Oct 2019 08:51:29 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;Redis常用命令&quot;&gt;&lt;a href=&quot;#Redis常用命令&quot; class=&quot;headerlink&quot; title=&quot;Redis常用命令&quot;&gt;&lt;/a&gt;Redis常用命令&lt;/h2&gt;&lt;h3 id=&quot;Key（键）&quot;&gt;&lt;a href=&quot;#Key（键）&quot; class=&quot;headerlink&quot; title=&quot;Key（键）&quot;&gt;&lt;/a&gt;Key（键）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;KEYS pattern&lt;/code&gt; 查找所有符合给定模式 pattern 的 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXISTS key&lt;/code&gt; 检查指定 key 是否存在&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DEL key [key ...]&lt;/code&gt; 删除一个或多个 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RENAME key newkey&lt;/code&gt; 重命名 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RENAMENX key newkey&lt;/code&gt; 当 newkey 不存在时，重命名 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXPIRE key seconds&lt;/code&gt; 设置 key 生存时间（秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PEXPIRE key milliseconds&lt;/code&gt; 设置 key 生存时间（毫秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;EXPIREAT key timestamp&lt;/code&gt; 设置 key 生存时间（UNIX 时间戳，秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PEXPIREAT key milliseconds-timestamp&lt;/code&gt; 设置 key 生存时间（UNIX 时间戳，毫秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PERSIST key&lt;/code&gt; 移除 key 生存时间，转换成永不过期的 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TTL key &lt;/code&gt; 获取 key 剩余生存时间（秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PTTL key &lt;/code&gt; 获取 key 剩余生存时间（毫秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RANDOMKEY&lt;/code&gt; 从当前数据库中随机返回（不删除）一个 key&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TYPE key&lt;/code&gt; 返回 key 所储存的值的类型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MOVE key db&lt;/code&gt; 将当前数据库的 key 移动到给定的数据库 db 当中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SORT key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern ...]] [ASC | DESC] [ALPHA] [STORE destination]&lt;/code&gt;返回或保存给定列表、集合、有序集合 key 中经过排序的元素&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Redis/">Redis</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Redis/">Redis</category>
+      
+      
+      <comments>https://catnip-5.github.io/Redis/Redis%EF%BC%9A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://catnip-5.github.io/Docker/Docker/</link>
+      <guid>https://catnip-5.github.io/Docker/Docker/</guid>
+      <pubDate>Tue, 01 Oct 2019 01:07:11 GMT</pubDate>
+      
+      <description>&lt;style&gt;
+.h4{
+    font-size: 16px;
+    color: #2c3e50;
+}
+&lt;/style&gt;
+
+&lt;h2 id=&quot;Docker简介&quot;&gt;&lt;a href=&quot;#Docker简介&quot; class=&quot;headerlink&quot; title=&quot;Docker简介&quot;&gt;&lt;/a&gt;Docker简介&lt;/h2&gt;&lt;h3 id=&quot;Docker是什么&quot;&gt;&lt;a href=&quot;#Docker是什么&quot; class=&quot;headerlink&quot; title=&quot;Docker是什么&quot;&gt;&lt;/a&gt;Docker是什么&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;解决了运行环境和配置问题软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Docker/">Docker</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Docker/">Docker</category>
+      
+      
+      <comments>https://catnip-5.github.io/Docker/Docker/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring：AOP</title>
+      <link>https://catnip-5.github.io/Spring/Spring%EF%BC%9AAOP/</link>
+      <guid>https://catnip-5.github.io/Spring/Spring%EF%BC%9AAOP/</guid>
+      <pubDate>Mon, 02 Sep 2019 08:20:11 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;AOP简介&quot;&gt;&lt;a href=&quot;#AOP简介&quot; class=&quot;headerlink&quot; title=&quot;AOP简介&quot;&gt;&lt;/a&gt;AOP简介&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;AOP(Aspect Oriented Programming)&lt;/code&gt; 面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP（面向对象编程）的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的&lt;code&gt;耦合度降低&lt;/code&gt;，提高程序的&lt;code&gt;可重用性&lt;/code&gt;，同时提高了开发的效率。&lt;/li&gt;
+&lt;li&gt;AOP采取&lt;code&gt;横向抽取&lt;/code&gt;机制，取代了传统&lt;code&gt;纵向继承&lt;/code&gt;体系重复性代码。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Spring/">Spring</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      
+      <comments>https://catnip-5.github.io/Spring/Spring%EF%BC%9AAOP/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring：常用注解汇总</title>
+      <link>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/</link>
+      <guid>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/</guid>
+      <pubDate>Fri, 30 Aug 2019 02:48:11 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;Bean相关&quot;&gt;&lt;a href=&quot;#Bean相关&quot; class=&quot;headerlink&quot; title=&quot;Bean相关&quot;&gt;&lt;/a&gt;Bean相关&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@Bean&lt;/code&gt; 声明当前方法的返回值为一个Bean&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Scope&lt;/code&gt; 用于指定作用域&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Lazy&lt;/code&gt; 表示延迟初始化&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Primary&lt;/code&gt; 自动装配时当出现多个Bean候选者时，被注解为@Primary的Bean将作为首选者&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Spring/">Spring</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      
+      <comments>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring：组件赋值</title>
+      <link>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E8%B5%8B%E5%80%BC/</link>
+      <guid>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E8%B5%8B%E5%80%BC/</guid>
+      <pubDate>Tue, 27 Aug 2019 09:54:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;属性赋值&quot;&gt;&lt;a href=&quot;#属性赋值&quot; class=&quot;headerlink&quot; title=&quot;属性赋值&quot;&gt;&lt;/a&gt;属性赋值&lt;/h2&gt;&lt;h3 id=&quot;Value&quot;&gt;&lt;a href=&quot;#Value&quot; class=&quot;headerlink&quot; title=&quot;@Value&quot;&gt;&lt;/a&gt;@Value&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@Value(“Michael Jackson”)&lt;/code&gt; 普通字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(&amp;quot;#&amp;#123;systemProperties[‘os.name’]&amp;#125;&amp;quot;)&lt;/code&gt; 操作系统属性&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(&amp;quot;#&amp;#123; T(java.lang.Math).random() * 100 &amp;#125;&amp;quot;)&lt;/code&gt; SpEl表达式结果&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(&amp;quot;#&amp;#123;domeClass.name&amp;#125;&amp;quot;)&lt;/code&gt; 其它Bean属性&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(“classpath:com/example/test.txt”)&lt;/code&gt; 文件资源&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(“https://www.baidu.com/”)&lt;/code&gt; 网站资源&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@Value(&amp;quot;$&amp;#123;book.name&amp;#125;&amp;quot;)&lt;/code&gt; 配置文件属性&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Spring/">Spring</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      
+      <comments>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E8%B5%8B%E5%80%BC/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring：生命周期</title>
+      <link>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <guid>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <pubDate>Sun, 25 Aug 2019 03:29:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;生命周期流程&quot;&gt;&lt;a href=&quot;#生命周期流程&quot; class=&quot;headerlink&quot; title=&quot;生命周期流程&quot;&gt;&lt;/a&gt;生命周期流程&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/Spring/Spring%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png&quot; alt=&quot;Bean生命周期&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;Spring容器根据实例化策略略对Bean进行实例化。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;实例化完成后，如果该bean设置了一些属性的话，则利用set方法设置一些属性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;如果该Bean实现了&lt;code&gt;BeanNameAware&lt;/code&gt;接口，则调用&lt;code&gt;setBeanName()&lt;/code&gt;方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;如果该Bean实现了&lt;code&gt;BeanFactoryAware&lt;/code&gt;接口，则调用&lt;code&gt;setBeanFactory()&lt;/code&gt;方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;如果该Bean实现了&lt;code&gt;ApplicationContextAware&lt;/code&gt;接口，则调用&lt;code&gt;setApplicationContext()&lt;/code&gt;方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;如果该容器注册了&lt;code&gt;BeanPostProcessor&lt;/code&gt;，则会调用&lt;code&gt;postProcessBeforeInitialization()&lt;/code&gt;方法完成Bean的前置处理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;如果该Bean实现了&lt;code&gt;InitializingBean&lt;/code&gt;接口，则调用&lt;code&gt;afterPropertiesSet()&lt;/code&gt;方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;8&quot;&gt;
+&lt;li&gt;如果该Bean配置了&lt;code&gt;init-method&lt;/code&gt;方法，则调用&lt;code&gt;init-method&lt;/code&gt;指定的方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;9&quot;&gt;
+&lt;li&gt;初始化完成后，如果该容器注册了&lt;code&gt;BeanPostProcessor&lt;/code&gt;则会调用&lt;code&gt;postProcessAfterInitialization()&lt;/code&gt;方法完成Bean的后置处理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;对象完成初始化，开始方法调用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;11&quot;&gt;
+&lt;li&gt;在容器进行关闭之前，如果该Bean实现了&lt;code&gt;DisposableBean&lt;/code&gt;接口，则调用&lt;code&gt;destroy()&lt;/code&gt;方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;12&quot;&gt;
+&lt;li&gt;在容器进行关闭之前，如果该Bean配置了&lt;code&gt;destroy-mehod&lt;/code&gt;，则调用&lt;code&gt;destroy-method&lt;/code&gt;指定的方法。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Spring/">Spring</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      
+      <comments>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring：组件注册</title>
+      <link>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C/</link>
+      <guid>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C/</guid>
+      <pubDate>Fri, 23 Aug 2019 08:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;Bean&quot;&gt;&lt;a href=&quot;#Bean&quot; class=&quot;headerlink&quot; title=&quot;@Bean&quot;&gt;&lt;/a&gt;@Bean&lt;/h2&gt;&lt;h3 id=&quot;Scope作用域&quot;&gt;&lt;a href=&quot;#Scope作用域&quot; class=&quot;headerlink&quot; title=&quot;@Scope作用域&quot;&gt;&lt;/a&gt;@Scope作用域&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;singleton&lt;/code&gt; 单实例(默认)。IOC容器启动会调用方法创建对象放到容器中，每次获取直接从容器中获取&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prototype&lt;/code&gt; 多实例。IOC容器启动不会调用方法创建对象放在容器中，每次获取时才会调用方法创建对象&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;request&lt;/code&gt; 同一次请求创建一个实例&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;session&lt;/code&gt; 同一个session创建一个实例&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Spring/">Spring</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      
+      <comments>https://catnip-5.github.io/Spring/Spring%EF%BC%9A%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：工作流程</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</guid>
+      <pubDate>Mon, 19 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;工作流程&quot;&gt;&lt;a href=&quot;#工作流程&quot; class=&quot;headerlink&quot; title=&quot;工作流程&quot;&gt;&lt;/a&gt;工作流程&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/SpringMVC/SpringMVC%EF%BC%9A%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/SpringMVC%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png&quot; alt=&quot;SpringMVC工作流程图&quot;&gt;&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：拦截器</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E6%8B%A6%E6%88%AA%E5%99%A8/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E6%8B%A6%E6%88%AA%E5%99%A8/</guid>
+      <pubDate>Sat, 17 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;拦截器&quot;&gt;&lt;a href=&quot;#拦截器&quot; class=&quot;headerlink&quot; title=&quot;拦截器&quot;&gt;&lt;/a&gt;拦截器&lt;/h2&gt;&lt;p&gt;Spring MVC也可以使用拦截器对请求进行拦截处理，用户可以自定义拦截器来实现特定的功能，自定义的拦截器必须实现HandlerInterceptor接口。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;preHandle()&lt;/code&gt; 该方法在业务处理器处理请求之前被调用，可以做权限、日志、事务等操作。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;postHandle()&lt;/code&gt; 该方法在业务处理器处理完请求后，但是渲染视图之前被调用，可以对请求域中的属性或视图做出修改等操作。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;afterCompletion()&lt;/code&gt; 该方法在渲染视图之后被调用，可以做释放资源等操作。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E6%8B%A6%E6%88%AA%E5%99%A8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：处理模型数据</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE/</guid>
+      <pubDate>Thu, 15 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;模型数据&quot;&gt;&lt;a href=&quot;#模型数据&quot; class=&quot;headerlink&quot; title=&quot;模型数据&quot;&gt;&lt;/a&gt;模型数据&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ModelAndView&lt;/code&gt; 处理方法返回值类型为ModelAndView时, 方法体即可通过该对象添加模型数据。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Map&lt;/code&gt; 、&lt;code&gt;Model&lt;/code&gt; 入参为org.springframework.ui.Model、org.springframework.ui.ModelMap 或 java.uti.Map 时，处理方法返回时，Map中的数据会自动添加到模型中。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@SessionAttributes&lt;/code&gt; 将模型中的某个属性暂存到HttpSession中，以便多个请求之间可以共享这个属性。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@ModelAttribute&lt;/code&gt; 方法入参标注该注解后，入参的对象就会放到数据模型中。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E5%A4%84%E7%90%86%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：请求参数</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/</guid>
+      <pubDate>Wed, 14 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;RequestParam&quot;&gt;&lt;a href=&quot;#RequestParam&quot; class=&quot;headerlink&quot; title=&quot;@RequestParam&quot;&gt;&lt;/a&gt;@RequestParam&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * &lt;span class=&quot;doctag&quot;&gt;@RequestParam&lt;/span&gt; 请求参数值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 属性：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 	  value：参数名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 	  required：是否必须，默认true，若不存在将抛出异常&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 	  defaultValue：默认值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * &lt;span class=&quot;doctag&quot;&gt;@return&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@RequestMapping(&amp;quot;/getParam&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title function_&quot;&gt;getParam&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;meta&quot;&gt;@RequestParam(value=&amp;quot;num&amp;quot;, required=false, defaultValue=&amp;quot;100&amp;quot;)&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; num)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	System.out.println(num);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;success&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：请求映射</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84/</guid>
+      <pubDate>Tue, 13 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;RequestMapping&quot;&gt;&lt;a href=&quot;#RequestMapping&quot; class=&quot;headerlink&quot; title=&quot;@RequestMapping&quot;&gt;&lt;/a&gt;@RequestMapping&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;DispatcherServlet&lt;/code&gt;截获请求后，通过控制器上&lt;code&gt;@RequestMapping&lt;/code&gt;提供的映射信息确定请求所对应的处理方法&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringMVC：HelloWorld</title>
+      <link>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9AHelloWorld/</link>
+      <guid>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9AHelloWorld/</guid>
+      <pubDate>Mon, 12 Aug 2019 03:08:50 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;SpringMVC概述&quot;&gt;&lt;a href=&quot;#SpringMVC概述&quot; class=&quot;headerlink&quot; title=&quot;SpringMVC概述&quot;&gt;&lt;/a&gt;SpringMVC概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Spring MVC框架提供了MVC(模型、视图、控制器)架构和用于开发灵活和松散耦合的Web应用程序的组件。 MVC模式导致应用程序的不同方面(输入逻辑，业务逻辑和UI逻辑)分离，同时提供这些元素之间的松散耦合。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;模型(Model)&lt;/code&gt; 封装了应用程序数据，通常它们将由POJO类组成。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;视图(View)&lt;/code&gt; 负责渲染模型数据，一般来说它生成客户端浏览器可以解释HTML输出。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;控制器(Controller)&lt;/code&gt; 负责处理用户请求并构建适当的模型，并将其传递给视图进行渲染。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/SpringMVC/">SpringMVC</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Spring/">Spring</category>
+      
+      <category domain="https://catnip-5.github.io/tags/SpringMVC/">SpringMVC</category>
+      
+      
+      <comments>https://catnip-5.github.io/SpringMVC/SpringMVC%EF%BC%9AHelloWorld/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>设计模式：七大原则</title>
+      <link>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/</link>
+      <guid>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/</guid>
       <pubDate>Fri, 09 Aug 2019 12:51:50 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;设计模式目的&quot;&gt;&lt;a href=&quot;#设计模式目的&quot; class=&quot;headerlink&quot; title=&quot;设计模式目的&quot;&gt;&lt;/a&gt;设计模式目的&lt;/h2&gt;&lt;ul&gt;
@@ -39,7 +486,7 @@
       <category domain="https://catnip-5.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category>
       
       
-      <comments>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/#disqus_thread</comments>
       
     </item>
     
@@ -77,9 +524,9 @@
     </item>
     
     <item>
-      <title>JDK8_Optional容器类</title>
-      <link>https://catnip-5.github.io/JDK/JDK8_Optional%E5%AE%B9%E5%99%A8%E7%B1%BB/</link>
-      <guid>https://catnip-5.github.io/JDK/JDK8_Optional%E5%AE%B9%E5%99%A8%E7%B1%BB/</guid>
+      <title>JDK8：Optional容器类</title>
+      <link>https://catnip-5.github.io/JDK/JDK8%EF%BC%9AOptional%E5%AE%B9%E5%99%A8%E7%B1%BB/</link>
+      <guid>https://catnip-5.github.io/JDK/JDK8%EF%BC%9AOptional%E5%AE%B9%E5%99%A8%E7%B1%BB/</guid>
       <pubDate>Fri, 02 Aug 2019 01:23:29 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;传统方式处理null&quot;&gt;&lt;a href=&quot;#传统方式处理null&quot; class=&quot;headerlink&quot; title=&quot;传统方式处理null&quot;&gt;&lt;/a&gt;传统方式处理null&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;TestOptional1&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * null-安全的第一种尝试：深层质疑&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * &lt;span class=&quot;doctag&quot;&gt;@param&lt;/span&gt; person&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * &lt;span class=&quot;doctag&quot;&gt;@return&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title function_&quot;&gt;getCarInsuranceName1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Person person)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (person != &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;Car&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; person.getCar();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (car != &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;type&quot;&gt;Insurance&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;insurance&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; car.getInsurance();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (insurance != &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; insurance.getName();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;Unknown&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * null-安全的第二种尝试：过多的退出语句&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * &lt;span class=&quot;doctag&quot;&gt;@param&lt;/span&gt; person&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * &lt;span class=&quot;doctag&quot;&gt;@return&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title function_&quot;&gt;getCarInsuranceName2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Person person)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (person == &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;Unknown&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Car&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; person.getCar();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (car == &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;Unknown&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Insurance&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;insurance&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; car.getInsurance();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (insurance == &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&amp;quot;Unknown&amp;quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; insurance.getName();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Person&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Car car;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Car &lt;span class=&quot;title function_&quot;&gt;getCar&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; car; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Car&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; Insurance insurance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; Insurance &lt;span class=&quot;title function_&quot;&gt;getInsurance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; insurance; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Insurance&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; String name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title function_&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; name; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
@@ -97,39 +544,14 @@
       <category domain="https://catnip-5.github.io/tags/JDK/">JDK</category>
       
       
-      <comments>https://catnip-5.github.io/JDK/JDK8_Optional%E5%AE%B9%E5%99%A8%E7%B1%BB/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/JDK/JDK8%EF%BC%9AOptional%E5%AE%B9%E5%99%A8%E7%B1%BB/#disqus_thread</comments>
       
     </item>
     
     <item>
-      <title>JDK8_新时间日期API</title>
-      <link>https://catnip-5.github.io/JDK/JDK8_%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/</link>
-      <guid>https://catnip-5.github.io/JDK/JDK8_%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/</guid>
-      <pubDate>Fri, 02 Aug 2019 01:23:29 GMT</pubDate>
-      
-      <description>&lt;h2 id=&quot;API使用&quot;&gt;&lt;a href=&quot;#API使用&quot; class=&quot;headerlink&quot; title=&quot;API使用&quot;&gt;&lt;/a&gt;API使用&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;105&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;107&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;108&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;109&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;110&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;111&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;112&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;113&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;114&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;115&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;116&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;117&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;118&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;119&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;120&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;121&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;122&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;124&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;125&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;126&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;127&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;128&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;129&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;130&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;131&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;132&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;133&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;134&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;135&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;136&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;137&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;138&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;139&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;140&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;141&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;142&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;143&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;144&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;145&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;146&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;147&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;148&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;149&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;150&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;151&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;152&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;153&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;154&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;155&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;156&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;157&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;158&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;159&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;160&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;161&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;162&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;163&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;164&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;165&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;166&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;167&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;168&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;169&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;170&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;171&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;172&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;173&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;174&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;175&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;176&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;177&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;178&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;179&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;180&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;181&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;182&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;183&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;184&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;185&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;186&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;187&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;188&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;189&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;190&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;191&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;193&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;194&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;195&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;196&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;197&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;198&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;199&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.DayOfWeek;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Duration;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Instant;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.LocalDate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.LocalDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.OffsetDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Period;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZoneId;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZoneOffset;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZonedDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.format.DateTimeFormatter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.temporal.TemporalAdjusters;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.Set;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; org.junit.Test;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;TestLocalDateTime&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * LocalDate、LocalTime、LocalDateTime&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * from     依据传入的 Temporal 对象创建对象实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * now      依据系统时钟创建 Temporal 对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * of       由 Temporal 对象的某个部分创建该对象的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * parse    由字符串创建 Temporal 对象的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * atOffset 将 Temporal 对象和某个时区偏移相结合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * atZone   将 Temporal 对象和某个时区相结合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * format   使用某个指定的格式器将Temporal对象转换为字符串（Instant类不提供该方法）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * get      读取 Temporal 对象的某一部分的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * minus    创建 Temporal 对象的一个副本，通过将当前 Temporal 对象的值减去一定的时长创建该副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * plus     创建 Temporal 对象的一个副本，通过将当前 Temporal 对象的值加上一定的时长创建该副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * with     以该 Temporal 对象为模板，对某些状态进行修改创建该对象的副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getYear());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getMonthValue());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getDayOfMonth());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getHour());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getMinute());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getSecond());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 指定时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.of(&lt;span class=&quot;number&quot;&gt;2020&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 加上时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt3&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt2.plusYears(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 减去时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt4&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt2.minusMonths(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt4);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * TemporalAdjuster 时间校正器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * TemporalAdjusters工具类方法：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   dayOfWeekInMonth           创建一个新的日期，它的值为同一个月中每一周的第几天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfMonth            创建一个新的日期，它的值为当月的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfNextMonth        创建一个新的日期，它的值为下月的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfNextYear         创建一个新的日期，它的值为明年的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfYear             创建一个新的日期，它的值为当年的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstInMonth               创建一个新的日期，它的值为同一个月中，第一个符合星期几要求的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfMonth             创建一个新的日期，它的值为当月的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfNextMonth         创建一个新的日期，它的值为下月的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfNextYear          创建一个新的日期，它的值为明年的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfYear              创建一个新的日期，它的值为今年的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastInMonth                创建一个新的日期，它的值为同一个月中，最后一个符合星期几要求的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   next/previous              创建一个新的日期，并将其值设定为日期调整后或者调整前，第一个符合指定星期几要求的日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   nextOrSame/previousOrSame  创建一个新的日期，并将其值设定为日期调整后或者调整前，第一个符合指定星期几要求的日期，如果该日期已经符合要求，直接返回该对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 修改时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.withDayOfMonth(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt3&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 自定义时间：下一个工作日&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt5&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.with((l) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt4&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; (LocalDateTime) l;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;DayOfWeek&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;dow&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt4.getDayOfWeek();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(dow.equals(DayOfWeek.FRIDAY))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(dow.equals(DayOfWeek.SATURDAY))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt5);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Instant 时间戳（使用 Unix 元年  1970年1月1日 00:00:00 所经历的毫秒值）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test3&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 默认使用 UTC 时区&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 设置时区偏移量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;OffsetDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;odt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ins1.atOffset(ZoneOffset.ofHours(&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(odt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取秒值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1.getEpochSecond());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1.toEpochMilli());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 设置秒值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.ofEpochSecond(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Duration 用于计算两个“时间”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Period   用于计算两个“日期”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test4&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 计算两个“时间”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Thread.sleep(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (InterruptedException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Duration&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;duration&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Duration.between(ins1, ins2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration.getSeconds());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration.toMillis());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;----------------------------------&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 计算两个“日期”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ld1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDate.of(&lt;span class=&quot;number&quot;&gt;2018&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ld2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDate.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Period&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;pe&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Period.between(ld1, ld2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getYears());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getMonths());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getDays());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * DateTimeFormatter 解析和格式化日期或时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test5&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;DateTimeFormatter&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;dtf&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; DateTimeFormatter.ofPattern(&lt;span class=&quot;string&quot;&gt;&amp;quot;yyyy年MM月dd日 HH:mm:ss E&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.format(dtf);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(date);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.parse(date, dtf);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * 获取所有可用时区&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test6&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Set&amp;lt;String&amp;gt; set = ZoneId.getAvailableZoneIds();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        set.forEach(System.out::println);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * ZonedDate、ZonedTime、ZonedDateTime 带时区的时间或日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test7&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now(ZoneId.of(&lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;ZonedDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;zdt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ZonedDateTime.now(ZoneId.of(&lt;span class=&quot;string&quot;&gt;&amp;quot;US/Pacific&amp;quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(zdt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
-      
-      
-      
-      
-      <category domain="https://catnip-5.github.io/categories/JDK/">JDK</category>
-      
-      
-      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
-      
-      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
-      
-      <category domain="https://catnip-5.github.io/tags/JDK/">JDK</category>
-      
-      
-      <comments>https://catnip-5.github.io/JDK/JDK8_%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>JDK8_函数式接口</title>
-      <link>https://catnip-5.github.io/JDK/JDK8_%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
-      <guid>https://catnip-5.github.io/JDK/JDK8_%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
+      <title>JDK8：函数式接口</title>
+      <link>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</link>
+      <guid>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/</guid>
       <pubDate>Fri, 02 Aug 2019 01:23:29 GMT</pubDate>
       
       <description>&lt;style&gt;
@@ -156,14 +578,170 @@ table td, table th {
       <category domain="https://catnip-5.github.io/tags/JDK/">JDK</category>
       
       
-      <comments>https://catnip-5.github.io/JDK/JDK8_%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3/#disqus_thread</comments>
       
     </item>
     
     <item>
-      <title>JDK_版本选择</title>
-      <link>https://catnip-5.github.io/JDK/JDK_%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/</link>
-      <guid>https://catnip-5.github.io/JDK/JDK_%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/</guid>
+      <title>JDK8：新时间日期API</title>
+      <link>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/</link>
+      <guid>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/</guid>
+      <pubDate>Fri, 02 Aug 2019 01:23:29 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;API使用&quot;&gt;&lt;a href=&quot;#API使用&quot; class=&quot;headerlink&quot; title=&quot;API使用&quot;&gt;&lt;/a&gt;API使用&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;105&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;106&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;107&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;108&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;109&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;110&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;111&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;112&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;113&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;114&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;115&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;116&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;117&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;118&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;119&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;120&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;121&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;122&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;123&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;124&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;125&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;126&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;127&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;128&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;129&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;130&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;131&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;132&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;133&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;134&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;135&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;136&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;137&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;138&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;139&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;140&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;141&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;142&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;143&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;144&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;145&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;146&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;147&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;148&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;149&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;150&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;151&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;152&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;153&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;154&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;155&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;156&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;157&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;158&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;159&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;160&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;161&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;162&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;163&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;164&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;165&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;166&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;167&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;168&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;169&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;170&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;171&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;172&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;173&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;174&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;175&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;176&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;177&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;178&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;179&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;180&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;181&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;182&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;183&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;184&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;185&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;186&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;187&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;188&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;189&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;190&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;191&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;192&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;193&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;194&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;195&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;196&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;197&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;198&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;199&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.DayOfWeek;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Duration;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Instant;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.LocalDate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.LocalDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.OffsetDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.Period;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZoneId;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZoneOffset;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.ZonedDateTime;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.format.DateTimeFormatter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.time.temporal.TemporalAdjusters;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; java.util.Set;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; org.junit.Test;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;TestLocalDateTime&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * LocalDate、LocalTime、LocalDateTime&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * from     依据传入的 Temporal 对象创建对象实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * now      依据系统时钟创建 Temporal 对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * of       由 Temporal 对象的某个部分创建该对象的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * parse    由字符串创建 Temporal 对象的实例&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * atOffset 将 Temporal 对象和某个时区偏移相结合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * atZone   将 Temporal 对象和某个时区相结合&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * format   使用某个指定的格式器将Temporal对象转换为字符串（Instant类不提供该方法）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * get      读取 Temporal 对象的某一部分的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * minus    创建 Temporal 对象的一个副本，通过将当前 Temporal 对象的值减去一定的时长创建该副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * plus     创建 Temporal 对象的一个副本，通过将当前 Temporal 对象的值加上一定的时长创建该副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * with     以该 Temporal 对象为模板，对某些状态进行修改创建该对象的副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test1&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getYear());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getMonthValue());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getDayOfMonth());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getHour());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getMinute());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt.getSecond());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 指定时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.of(&lt;span class=&quot;number&quot;&gt;2020&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 加上时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt3&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt2.plusYears(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 减去时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt4&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt2.minusMonths(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt4);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * TemporalAdjuster 时间校正器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * TemporalAdjusters工具类方法：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   dayOfWeekInMonth           创建一个新的日期，它的值为同一个月中每一周的第几天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfMonth            创建一个新的日期，它的值为当月的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfNextMonth        创建一个新的日期，它的值为下月的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfNextYear         创建一个新的日期，它的值为明年的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstDayOfYear             创建一个新的日期，它的值为当年的第一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   firstInMonth               创建一个新的日期，它的值为同一个月中，第一个符合星期几要求的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfMonth             创建一个新的日期，它的值为当月的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfNextMonth         创建一个新的日期，它的值为下月的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfNextYear          创建一个新的日期，它的值为明年的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastDayOfYear              创建一个新的日期，它的值为今年的最后一天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   lastInMonth                创建一个新的日期，它的值为同一个月中，最后一个符合星期几要求的值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   next/previous              创建一个新的日期，并将其值设定为日期调整后或者调整前，第一个符合指定星期几要求的日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     *   nextOrSame/previousOrSame  创建一个新的日期，并将其值设定为日期调整后或者调整前，第一个符合指定星期几要求的日期，如果该日期已经符合要求，直接返回该对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 修改时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.withDayOfMonth(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt3&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt3);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 自定义时间：下一个工作日&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt5&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.with((l) -&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt4&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; (LocalDateTime) l;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;type&quot;&gt;DayOfWeek&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;dow&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt4.getDayOfWeek();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(dow.equals(DayOfWeek.FRIDAY))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(dow.equals(DayOfWeek.SATURDAY))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ldt4.plusDays(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt5);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Instant 时间戳（使用 Unix 元年  1970年1月1日 00:00:00 所经历的毫秒值）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test3&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 默认使用 UTC 时区&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now(); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 设置时区偏移量&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;OffsetDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;odt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ins1.atOffset(ZoneOffset.ofHours(&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(odt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 获取秒值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1.getEpochSecond());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins1.toEpochMilli());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 设置秒值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.ofEpochSecond(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ins2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Duration 用于计算两个“时间”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * Period   用于计算两个“日期”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test4&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 计算两个“时间”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Thread.sleep(&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (InterruptedException e) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Instant&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ins2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Instant.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Duration&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;duration&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Duration.between(ins1, ins2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration.getSeconds());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(duration.toMillis());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;----------------------------------&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;// 计算两个“日期”间隔&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ld1&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDate.of(&lt;span class=&quot;number&quot;&gt;2018&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDate&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ld2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDate.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;Period&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;pe&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; Period.between(ld1, ld2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getYears());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getMonths());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(pe.getDays());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * DateTimeFormatter 解析和格式化日期或时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test5&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;DateTimeFormatter&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;dtf&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; DateTimeFormatter.ofPattern(&lt;span class=&quot;string&quot;&gt;&amp;quot;yyyy年MM月dd日 HH:mm:ss E&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.format(dtf);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(date);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt2&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ldt.parse(date, dtf);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * 获取所有可用时区&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test6&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Set&amp;lt;String&amp;gt; set = ZoneId.getAvailableZoneIds();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        set.forEach(System.out::println);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     * ZonedDate、ZonedTime、ZonedDateTime 带时区的时间或日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;     */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;test7&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;LocalDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;ldt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; LocalDateTime.now(ZoneId.of(&lt;span class=&quot;string&quot;&gt;&amp;quot;Asia/Shanghai&amp;quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(ldt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;ZonedDateTime&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;zdt&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; ZonedDateTime.now(ZoneId.of(&lt;span class=&quot;string&quot;&gt;&amp;quot;US/Pacific&amp;quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(zdt);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/JDK/">JDK</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/JDK/">JDK</category>
+      
+      
+      <comments>https://catnip-5.github.io/JDK/JDK8%EF%BC%9A%E6%96%B0%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9FAPI/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>OOM常见异常</title>
+      <link>https://catnip-5.github.io/JVM/OOM%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8/</link>
+      <guid>https://catnip-5.github.io/JVM/OOM%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8/</guid>
+      <pubDate>Mon, 29 Jul 2019 02:22:28 GMT</pubDate>
+      
+      <description>&lt;!-- https://zhuanlan.zhihu.com/p/63916807 --&gt;
+
+&lt;h2 id=&quot;堆内存溢出&quot;&gt;&lt;a href=&quot;#堆内存溢出&quot; class=&quot;headerlink&quot; title=&quot;堆内存溢出&quot;&gt;&lt;/a&gt;堆内存溢出&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;原因&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;java堆内存不够&lt;/li&gt;
+&lt;li&gt;业务高峰，创建对象过多&lt;/li&gt;
+&lt;li&gt;内存泄露&lt;/li&gt;
+&lt;li&gt;内存碎片严重，无法分配给大对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调整 -Xmx 参数增加堆大小&lt;/li&gt;
+&lt;li&gt;修复应用程序中的内存泄漏&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/JVM/">JVM</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/JVM/">JVM</category>
+      
+      
+      <comments>https://catnip-5.github.io/JVM/OOM%E5%B8%B8%E8%A7%81%E5%BC%82%E5%B8%B8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>GC调优</title>
+      <link>https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/</link>
+      <guid>https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/</guid>
+      <pubDate>Wed, 24 Jul 2019 02:22:28 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;JVM参数类型&quot;&gt;&lt;a href=&quot;#JVM参数类型&quot; class=&quot;headerlink&quot; title=&quot;JVM参数类型&quot;&gt;&lt;/a&gt;JVM参数类型&lt;/h2&gt;&lt;h3 id=&quot;标配参数-了解&quot;&gt;&lt;a href=&quot;#标配参数-了解&quot; class=&quot;headerlink&quot; title=&quot;标配参数 (了解)&quot;&gt;&lt;/a&gt;标配参数 (了解)&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-version&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-help&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-showversion&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;~  java -version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   java version &lt;span class=&quot;string&quot;&gt;&amp;quot;1.8.0_201&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/JVM/">JVM</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/JVM/">JVM</category>
+      
+      
+      <comments>https://catnip-5.github.io/JVM/GC%E8%B0%83%E4%BC%98/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>GC机制</title>
+      <link>https://catnip-5.github.io/JVM/GC%E6%9C%BA%E5%88%B6/</link>
+      <guid>https://catnip-5.github.io/JVM/GC%E6%9C%BA%E5%88%B6/</guid>
+      <pubDate>Tue, 02 Jul 2019 02:22:28 GMT</pubDate>
+      
+      <description>&lt;!-- ## JVM内存结构
+![JVM内存结构](JVM_GC机制/JVM内存结构.png)
+
+### 新生代(Young Generation) 
+- 大多数对象在新生代中被创建，其中很多对象的生命周期很短。每次新生代的垃圾回收（又称`Minor GC`）后只有少量对象存活，所以选用`复制算法`，只需要少量的复制成本就可以完成回收。
+
+- 新生代内又分三个区：一个`Eden`区，两个`Survivor`区，大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到两个Survivor区（中的一个）。当这个Survivor区满时，此区的存活且不满足“晋升”条件的对象将被复制到另外一个Survivor区。`对象每经历一次Minor GC，年龄加1，达到“晋升年龄阈值”后，被放到老年代，这个过程也称为“晋升”`。显然，“晋升年龄阈值”的大小直接影响着对象在新生代中的停留时间，在`Serial`和`ParNew` 两种GC回收器中，`“晋升年龄阈值”通过参数MaxTenuringThreshold设定，默认值为15`。
+
+### 老年代(Old Generation)  
+- 在新生代中经历了N次垃圾回收后仍存活的对象，就会被放到年老代，该区域中对象存活率高。老年代的垃圾回收（又称`Major GC`）通常使用`“标记-清理”`或`“标记-整理”`算法。整堆包括新生代和老年代的垃圾回收称为`Full GC`（HotSpot VM里，除了`CMS`之外，其它能收集老年代的GC都会同时收集整个GC堆，包括新生代）
+
+### 永久代(Perm Generation) `
+- 主要存放元数据，例如Class、Method的元信息，与垃圾回收要回收的Java对象关系不大。相对于新生代和年老代来说，该区域的划分对垃圾回收影响比较小。 --&gt;
+&lt;h2 id=&quot;GC判断策略&quot;&gt;&lt;a href=&quot;#GC判断策略&quot; class=&quot;headerlink&quot; title=&quot;GC判断策略&quot;&gt;&lt;/a&gt;GC判断策略&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/JVM/GC%E6%9C%BA%E5%88%B6/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%9F%E6%AD%BB.png&quot; alt=&quot;判断对象的生死&quot;&gt;&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/JVM/">JVM</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/JVM/">JVM</category>
+      
+      
+      <comments>https://catnip-5.github.io/JVM/GC%E6%9C%BA%E5%88%B6/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>体系结构</title>
+      <link>https://catnip-5.github.io/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</link>
+      <guid>https://catnip-5.github.io/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</guid>
+      <pubDate>Mon, 01 Jul 2019 02:22:28 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;JVM体系结构&quot;&gt;&lt;a href=&quot;#JVM体系结构&quot; class=&quot;headerlink&quot; title=&quot;JVM体系结构&quot;&gt;&lt;/a&gt;JVM体系结构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.jpeg&quot; alt=&quot;JVM体系结构&quot;&gt;&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/JVM/">JVM</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/JVM/">JVM</category>
+      
+      
+      <comments>https://catnip-5.github.io/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>JDK：版本选择</title>
+      <link>https://catnip-5.github.io/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/</link>
+      <guid>https://catnip-5.github.io/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/</guid>
       <pubDate>Thu, 25 Apr 2019 05:45:29 GMT</pubDate>
       
       <description>&lt;table&gt;
@@ -352,7 +930,64 @@ table td, table th {
       <category domain="https://catnip-5.github.io/tags/JDK/">JDK</category>
       
       
-      <comments>https://catnip-5.github.io/JDK/JDK_%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Maven：手动导包</title>
+      <link>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%8C%85/</link>
+      <guid>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%8C%85/</guid>
+      <pubDate>Thu, 25 Apr 2019 05:45:29 GMT</pubDate>
+      
+        
+        
+      <description>&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span clas</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Maven/">Maven</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Maven/">Maven</category>
+      
+      
+      <comments>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%8C%85/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Maven：镜像源</title>
+      <link>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E9%95%9C%E5%83%8F%E6%BA%90/</link>
+      <guid>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E9%95%9C%E5%83%8F%E6%BA%90/</guid>
+      <pubDate>Thu, 25 Apr 2019 05:45:29 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;镜像地址&quot;&gt;&lt;a href=&quot;#镜像地址&quot; class=&quot;headerlink&quot; title=&quot;镜像地址&quot;&gt;&lt;/a&gt;镜像地址&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;阿里云 &lt;a href=&quot;https://maven.aliyun.com/mvn/view&quot;&gt;https://</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Maven/">Maven</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Maven/">Maven</category>
+      
+      
+      <comments>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E9%95%9C%E5%83%8F%E6%BA%90/#disqus_thread</comments>
       
     </item>
     
@@ -489,9 +1124,9 @@ table td, table th {
     </item>
     
     <item>
-      <title>Git_常用命令</title>
-      <link>https://catnip-5.github.io/Git/Git_%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
-      <guid>https://catnip-5.github.io/Git/Git_%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <title>Git：常用命令</title>
+      <link>https://catnip-5.github.io/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <guid>https://catnip-5.github.io/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <pubDate>Thu, 14 Mar 2019 08:59:50 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;初始化配置&quot;&gt;&lt;a href=&quot;#初始化配置&quot; class=&quot;headerlink&quot; title=&quot;初始化配置&quot;&gt;&lt;/a&gt;初始化配置&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查询配置信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --list                                &lt;span class=&quot;comment&quot;&gt;# 列出当前配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --&lt;span class=&quot;built_in&quot;&gt;local&lt;/span&gt; --list                        &lt;span class=&quot;comment&quot;&gt;# 列出仓库配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global --list                       &lt;span class=&quot;comment&quot;&gt;# 列出全局配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --system --list                       &lt;span class=&quot;comment&quot;&gt;# 列出系统配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 配置用户信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global user.name &amp;lt;user&amp;gt;             &lt;span class=&quot;comment&quot;&gt;# 配置用户名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global user.email &amp;lt;email&amp;gt;           &lt;span class=&quot;comment&quot;&gt;# 配置用户邮箱&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 其他配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global merge.tool vimdiff           &lt;span class=&quot;comment&quot;&gt;# 配置解决冲突时使用哪种差异分析工具，比如要使用vimdiff&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global alias.co checkout    　　　   &lt;span class=&quot;comment&quot;&gt;# 配置别名&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global color.ui auto    　　　　　　  &lt;span class=&quot;comment&quot;&gt;# 配置git命令输出为彩色的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global core.editor vi    　　　　　　 &lt;span class=&quot;comment&quot;&gt;# 配置git使用的文本编辑器&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global credential.helper cache      &lt;span class=&quot;comment&quot;&gt;# 配置到缓存 默认15分钟&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git config --global credential.helper &lt;span class=&quot;string&quot;&gt;&amp;#x27;cache --timeout=3600&amp;#x27;&lt;/span&gt;      &lt;span class=&quot;comment&quot;&gt;# 修改缓存时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
@@ -509,14 +1144,42 @@ table td, table th {
       <category domain="https://catnip-5.github.io/tags/Git/">Git</category>
       
       
-      <comments>https://catnip-5.github.io/Git/Git_%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
       
     </item>
     
     <item>
-      <title>设计模式_单利模式</title>
-      <link>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/</link>
-      <guid>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/</guid>
+      <title>Git：配置多个SSH-Key</title>
+      <link>https://catnip-5.github.io/Git/Git%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/</link>
+      <guid>https://catnip-5.github.io/Git/Git%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/</guid>
+      <pubDate>Thu, 14 Mar 2019 08:59:50 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;生成多个网站使用的SSH-Key&quot;&gt;&lt;a href=&quot;#生成多个网站使用的SSH-Key&quot; class=&quot;headerlink&quot; title=&quot;生成多个网站使用的SSH-Key&quot;&gt;&lt;/a&gt;生成多个网站使用的SSH-Key&lt;/h2&gt;&lt;figure class=&quot;hi</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Git/">Git</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Git/">Git</category>
+      
+      
+      <comments>https://catnip-5.github.io/Git/Git%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>设计模式：单利模式</title>
+      <link>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/</link>
+      <guid>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/</guid>
       <pubDate>Thu, 14 Mar 2019 06:28:50 GMT</pubDate>
       
       <description>&lt;h2 id=&quot;懒汉模式，线程不安全&quot;&gt;&lt;a href=&quot;#懒汉模式，线程不安全&quot; class=&quot;headerlink&quot; title=&quot;懒汉模式，线程不安全&quot;&gt;&lt;/a&gt;懒汉模式，线程不安全&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 懒汉模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 是否 Lazy 初始化：是&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 是否多线程安全：否&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 描述：这种方式 lazy loading 很明显，但是致命的是在多线程不能正常工作。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Singleton&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;Singleton&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title function_&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(instance == &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            instance = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Singleton&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
@@ -534,7 +1197,7 @@ table td, table th {
       <category domain="https://catnip-5.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</category>
       
       
-      <comments>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F_%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/#disqus_thread</comments>
+      <comments>https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/#disqus_thread</comments>
       
     </item>
     

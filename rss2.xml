@@ -502,6 +502,294 @@
     </item>
     
     <item>
+      <title>Java_基础：Files工具类</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AFiles%E5%B7%A5%E5%85%B7%E7%B1%BB/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AFiles%E5%B7%A5%E5%85%B7%E7%B1%BB/</guid>
+      <pubDate>Mon, 05 Aug 2019 06:12:34 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot; title=&quot;案例&quot;&gt;&lt;/a&gt;案例&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AFiles%E5%B7%A5%E5%85%B7%E7%B1%BB/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：Paths工具类</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9APaths%E5%B7%A5%E5%85%B7%E7%B1%BB/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9APaths%E5%B7%A5%E5%85%B7%E7%B1%BB/</guid>
+      <pubDate>Mon, 05 Aug 2019 06:12:34 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot; title=&quot;案例&quot;&gt;&lt;/a&gt;案例&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9APaths%E5%B7%A5%E5%85%B7%E7%B1%BB/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：反射</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/</guid>
+      <pubDate>Mon, 05 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;反射机制&quot;&gt;&lt;a href=&quot;#反射机制&quot; class=&quot;headerlink&quot; title=&quot;反射机制&quot;&gt;&lt;/a&gt;反射机制&lt;/h2&gt;&lt;h3 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Java反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。用一句话总结就是&lt;code&gt;反射可以实现在运行时可以知道任意一个类的属性和方法&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：注解</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%B3%A8%E8%A7%A3/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%B3%A8%E8%A7%A3/</guid>
+      <pubDate>Mon, 05 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;从 JDK 5.0 开始, Java 增加了对元数据(MetaData) 的支持, 也就是 Annotation(注解)。&lt;/li&gt;
+&lt;li&gt;Annotation 其实就是代码里的&lt;code&gt;特殊标记&lt;/code&gt;, 这些标记可以在编译, 类加载, 运行时被读取, 并执行相应的处理。&lt;/li&gt;
+&lt;li&gt;Annotation 可以像修饰符一样被使用, 可用于&lt;code&gt;修饰包、类、构造器、方法、成员变量、参数、局部变量的声明&lt;/code&gt;, 这些信息被保存在 Annotation 的 “name&amp;#x3D;value” 对中。&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%B3%A8%E8%A7%A3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：类初始化顺序</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F/</guid>
+      <pubDate>Sun, 04 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;类初始化顺序&quot;&gt;&lt;a href=&quot;#类初始化顺序&quot; class=&quot;headerlink&quot; title=&quot;类初始化顺序&quot;&gt;&lt;/a&gt;类初始化顺序&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;父类静态变量/静态初始化块&lt;/code&gt; -&amp;gt; &lt;code&gt;子类静态变量/静态初始化块&lt;/code&gt; -&amp;gt; &lt;code&gt;父类变量/初始化块&lt;/code&gt; -&amp;gt;  &lt;code&gt;父类构造器&lt;/code&gt; -&amp;gt; &lt;code&gt;子类变量/初始化块&lt;/code&gt; -&amp;gt; &lt;code&gt;子类构造器&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%BA%E5%BA%8F/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_IO：IO类型</title>
+      <link>https://catnip-5.github.io/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/</link>
+      <guid>https://catnip-5.github.io/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/</guid>
+      <pubDate>Sat, 03 Aug 2019 06:12:34 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;&lt;img src=&quot;/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/IO%E7%B1%BB%E5%9E%8B.png&quot; alt=&quot;IO类型&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;BIO、NIO、AIO基本说明&quot;&gt;&lt;a href=&quot;#BIO、NIO</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-IO/">Java_IO</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_IO：流体系</title>
+      <link>https://catnip-5.github.io/Java/Java_IO%EF%BC%9A%E6%B5%81%E4%BD%93%E7%B3%BB/</link>
+      <guid>https://catnip-5.github.io/Java/Java_IO%EF%BC%9A%E6%B5%81%E4%BD%93%E7%B3%BB/</guid>
+      <pubDate>Sat, 03 Aug 2019 06:12:34 GMT</pubDate>
+      
+        
+        
+      <description>&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分类&lt;/th&gt;
+&lt;th&gt;字节输入流&lt;/th&gt;
+&lt;th&gt;字节输出流&lt;/th&gt;
+&lt;th&gt;字符输入流&lt;/th&gt;
+&lt;th&gt;字符输出流&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;基类&lt;/td&gt;
+&lt;td&gt;Inpu</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-IO/">Java_IO</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_IO%EF%BC%9A%E6%B5%81%E4%BD%93%E7%B3%BB/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：String类intern方法</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AString%E7%B1%BBintern%E6%96%B9%E6%B3%95/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AString%E7%B1%BBintern%E6%96%B9%E6%B3%95/</guid>
+      <pubDate>Sat, 03 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;String-intern-方法&quot;&gt;&lt;a href=&quot;#String-intern-方法&quot; class=&quot;headerlink&quot; title=&quot;String::intern()方法&quot;&gt;&lt;/a&gt;String::intern()方法&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;native&lt;/span&gt; String &lt;span class=&quot;title function_&quot;&gt;intern&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;String-intern-解释&quot;&gt;&lt;a href=&quot;#String-intern-解释&quot; class=&quot;headerlink&quot; title=&quot;String::intern()解释&quot;&gt;&lt;/a&gt;String::intern()解释&lt;/h2&gt;&lt;p&gt;String::intern是一个本地方法，它的作用是如果字符串常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象的引用；否则，会将此String对象包含的字符串添加到常量池中，并且返回此String对象的引用。&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9AString%E7%B1%BBintern%E6%96%B9%E6%B3%95/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：参数传递</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/</guid>
+      <pubDate>Sat, 03 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;传递方式&quot;&gt;&lt;a href=&quot;#传递方式&quot; class=&quot;headerlink&quot; title=&quot;传递方式&quot;&gt;&lt;/a&gt;传递方式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;值传递&lt;/code&gt; 传递的是值的副本。方法中对副本的修改，不会影响到调用方&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;引用传递&lt;/code&gt; 传递的是对象的引用。共用一个内存，会影响到调用方。如果方法中对象的引用重新指向其他对象的引用，不会影响到调用方&lt;/li&gt;
+&lt;/ul&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：自增变量</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/</guid>
+      <pubDate>Fri, 02 Aug 2019 06:12:34 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot; title=&quot;案例&quot;&gt;&lt;/a&gt;案例&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;Test&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title function_&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        i = i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;=&lt;/span&gt; i + ++i * i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;i=&amp;quot;&lt;/span&gt; + i);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;j=&amp;quot;&lt;/span&gt; + j);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;k=&amp;quot;&lt;/span&gt; + k);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>JDK8：Optional容器类</title>
       <link>https://catnip-5.github.io/JDK/JDK8%EF%BC%9AOptional%E5%AE%B9%E5%99%A8%E7%B1%BB/</link>
       <guid>https://catnip-5.github.io/JDK/JDK8%EF%BC%9AOptional%E5%AE%B9%E5%99%A8%E7%B1%BB/</guid>
@@ -707,6 +995,42 @@ table td, table th {
       
       
       <comments>https://catnip-5.github.io/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java_基础：二进制</title>
+      <link>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/</link>
+      <guid>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/</guid>
+      <pubDate>Wed, 29 May 2019 19:05:34 GMT</pubDate>
+      
+      <description>&lt;style&gt;
+.article-content div table {
+    width: 50%;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+.article-content div table thead tr th {
+    color:rgb(31,73,125);
+}
+&lt;/style&gt;
+
+&lt;h2 id=&quot;进制&quot;&gt;&lt;a href=&quot;#进制&quot; class=&quot;headerlink&quot; title=&quot;进制&quot;&gt;&lt;/a&gt;进制&lt;/h2&gt;&lt;p&gt;&lt;code&gt;二进制(binary)&lt;/code&gt; 0-1，满2进1，以 &lt;span style=&quot;color:red&quot;&gt;0b或0B&lt;/span&gt; 开头。&lt;br&gt;&lt;code&gt;十进制(decimal)&lt;/code&gt; 0-9，满10进1。&lt;br&gt;&lt;code&gt;八进制(octal)&lt;/code&gt; 0-7，满8进1, 以数字 &lt;span style=&quot;color:red&quot;&gt;0&lt;/span&gt; 开头表示。&lt;br&gt;&lt;code&gt;十六进制(hex)&lt;/code&gt; 0-9及A-F，满16进1，以 &lt;span style=&quot;color:red&quot;&gt;0x或0X&lt;/span&gt; 开头表示。此处的A-F不区分大小写。如：0x21AF +1&amp;#x3D; 0X21B0&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Java/">Java</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java/">Java</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Java-%E5%9F%BA%E7%A1%80/">Java_基础</category>
+      
+      
+      <comments>https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/#disqus_thread</comments>
       
     </item>
     
@@ -956,6 +1280,33 @@ table td, table th {
       
       
       <comments>https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E9%95%9C%E5%83%8F%E6%BA%90/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Http特殊字符</title>
+      <link>https://catnip-5.github.io/Http/Http%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</link>
+      <guid>https://catnip-5.github.io/Http/Http%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</guid>
+      <pubDate>Thu, 25 Apr 2019 05:45:29 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;&lt;img src=&quot;/Http/Http%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/Http%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6.png&quot; alt=&quot;Http特殊字符&quot;&gt;&lt;/p&gt;
+</description>
+        
+      
+      
+      
+      
+      <category domain="https://catnip-5.github.io/categories/Http/">Http</category>
+      
+      
+      <category domain="https://catnip-5.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</category>
+      
+      <category domain="https://catnip-5.github.io/tags/Http/">Http</category>
+      
+      
+      <comments>https://catnip-5.github.io/Http/Http%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/#disqus_thread</comments>
       
     </item>
     

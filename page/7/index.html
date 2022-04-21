@@ -119,17 +119,17 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -215,7 +215,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/JVM/GC%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -229,7 +229,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Git：常用命令</a>
+            <a href="/JVM/GC%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">GC机制</a>
         </h2>
 
         <div class="post-meta">
@@ -239,14 +239,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-14 16:59:50" itemprop="dateCreated datePublished" datetime="2019-03-14T16:59:50+08:00">2019-03-14</time>
+              <time title="创建时间：2019-07-02 10:22:28" itemprop="dateCreated datePublished" datetime="2019-07-02T10:22:28+08:00">2019-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 23:29:28" itemprop="dateModified" datetime="2022-04-18T23:29:28+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-19 23:37:33" itemprop="dateModified" datetime="2022-04-19T23:37:33+08:00">2022-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
                 </span>
             </span>
 
@@ -269,10 +269,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询配置信息</span></span><br><span class="line">git config --list                                <span class="comment"># 列出当前配置</span></span><br><span class="line">git config --<span class="built_in">local</span> --list                        <span class="comment"># 列出仓库配置</span></span><br><span class="line">git config --global --list                       <span class="comment"># 列出全局配置</span></span><br><span class="line">git config --system --list                       <span class="comment"># 列出系统配置</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name &lt;user&gt;             <span class="comment"># 配置用户名</span></span><br><span class="line">git config --global user.email &lt;email&gt;           <span class="comment"># 配置用户邮箱</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他配置</span></span><br><span class="line">git config --global merge.tool vimdiff           <span class="comment"># 配置解决冲突时使用哪种差异分析工具，比如要使用vimdiff</span></span><br><span class="line">git config --global alias.co checkout    　　　   <span class="comment"># 配置别名</span></span><br><span class="line">git config --global color.ui auto    　　　　　　  <span class="comment"># 配置git命令输出为彩色的</span></span><br><span class="line">git config --global core.editor vi    　　　　　　 <span class="comment"># 配置git使用的文本编辑器</span></span><br><span class="line">git config --global credential.helper cache      <span class="comment"># 配置到缓存 默认15分钟</span></span><br><span class="line">git config --global credential.helper <span class="string">&#x27;cache --timeout=3600&#x27;</span>      <span class="comment"># 修改缓存时间</span></span><br></pre></td></tr></table></figure>
+          <!-- ## JVM内存结构
+![JVM内存结构](JVM_GC机制/JVM内存结构.png)
+
+### 新生代(Young Generation) 
+- 大多数对象在新生代中被创建，其中很多对象的生命周期很短。每次新生代的垃圾回收（又称`Minor GC`）后只有少量对象存活，所以选用`复制算法`，只需要少量的复制成本就可以完成回收。
+
+- 新生代内又分三个区：一个`Eden`区，两个`Survivor`区，大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到两个Survivor区（中的一个）。当这个Survivor区满时，此区的存活且不满足“晋升”条件的对象将被复制到另外一个Survivor区。`对象每经历一次Minor GC，年龄加1，达到“晋升年龄阈值”后，被放到老年代，这个过程也称为“晋升”`。显然，“晋升年龄阈值”的大小直接影响着对象在新生代中的停留时间，在`Serial`和`ParNew` 两种GC回收器中，`“晋升年龄阈值”通过参数MaxTenuringThreshold设定，默认值为15`。
+
+### 老年代(Old Generation)  
+- 在新生代中经历了N次垃圾回收后仍存活的对象，就会被放到年老代，该区域中对象存活率高。老年代的垃圾回收（又称`Major GC`）通常使用`“标记-清理”`或`“标记-整理”`算法。整堆包括新生代和老年代的垃圾回收称为`Full GC`（HotSpot VM里，除了`CMS`之外，其它能收集老年代的GC都会同时收集整个GC堆，包括新生代）
+
+### 永久代(Perm Generation) `
+- 主要存放元数据，例如Class、Method的元信息，与垃圾回收要回收的Java对象关系不大。相对于新生代和年老代来说，该区域的划分对垃圾回收影响比较小。 -->
+<h2 id="GC判断策略"><a href="#GC判断策略" class="headerlink" title="GC判断策略"></a>GC判断策略</h2><p><img src="/JVM/GC%E6%9C%BA%E5%88%B6/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%94%9F%E6%AD%BB.png" alt="判断对象的生死"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Git/Git%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
+              <a class="btn" href="/JVM/GC%E6%9C%BA%E5%88%B6/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -296,7 +309,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Git/Git%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -310,7 +323,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Git/Git%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AASSH-Key/" class="post-title-link" itemprop="url">Git：配置多个SSH-Key</a>
+            <a href="/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">体系结构</a>
         </h2>
 
         <div class="post-meta">
@@ -320,14 +333,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-14 16:59:50" itemprop="dateCreated datePublished" datetime="2019-03-14T16:59:50+08:00">2019-03-14</time>
+              <time title="创建时间：2019-07-01 10:22:28" itemprop="dateCreated datePublished" datetime="2019-07-01T10:22:28+08:00">2019-07-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-19 00:08:04" itemprop="dateModified" datetime="2022-04-19T00:08:04+08:00">2022-04-19</time>
+                <time title="修改时间：2022-04-19 23:37:33" itemprop="dateModified" datetime="2022-04-19T23:37:33+08:00">2022-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,7 +348,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
                 </span>
             </span>
 
@@ -350,13 +363,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="生成多个网站使用的SSH-Key"><a href="#生成多个网站使用的SSH-Key" class="headerlink" title="生成多个网站使用的SSH-Key"></a>生成多个网站使用的SSH-Key</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;github&quot;</span> -f ~/.ssh/id_rsa_github</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;gitee&quot;</span> -f ~/.ssh/id_rsa_gitee</span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;gitlab&quot;</span> -f ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加私钥"><a href="#添加私钥" class="headerlink" title="添加私钥"></a>添加私钥</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_github</span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitee</span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
-<p>注：<br>    执行ssh-add时提示”Could not open a connection to your authentication agent”，先执行ssh-agent bash<br>    ssh-add -l 查询私钥列表<br>    ssh-add -D 清空私钥列表</p>
-<h2 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .ssh目录下创建config文件，添加以下内容(Host、HostName 填写git服务器的域名,  IdentityFile指定私钥的路径)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName ssh.github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line">Port 443</span><br><span class="line"></span><br><span class="line"><span class="comment"># gitee </span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com </span><br><span class="line">PreferredAuthentications publickey </span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br><span class="line"></span><br><span class="line"><span class="comment"># gitlab</span></span><br><span class="line">Host gitlab.com</span><br><span class="line">HostName gitlab.com  </span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line">ssh -T git@gitee.com</span><br><span class="line">ssh -T git@gitlab.com</span><br></pre></td></tr></table></figure>
+          <h2 id="JVM体系结构"><a href="#JVM体系结构" class="headerlink" title="JVM体系结构"></a>JVM体系结构</h2><p><img src="/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/JVM%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.jpeg" alt="JVM体系结构"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/JVM/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -375,7 +390,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -389,7 +404,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式：单利模式</a>
+            <a href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/" class="post-title-link" itemprop="url">Java_基础：二进制</a>
         </h2>
 
         <div class="post-meta">
@@ -399,14 +414,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-14 14:28:50" itemprop="dateCreated datePublished" datetime="2019-03-14T14:28:50+08:00">2019-03-14</time>
+              <time title="创建时间：2019-05-30 03:05:34" itemprop="dateCreated datePublished" datetime="2019-05-30T03:05:34+08:00">2019-05-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-18 23:04:09" itemprop="dateModified" datetime="2022-04-18T23:04:09+08:00">2022-04-18</time>
+                <time title="修改时间：2022-04-22 00:38:58" itemprop="dateModified" datetime="2022-04-22T00:38:58+08:00">2022-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -414,7 +429,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
                 </span>
             </span>
 
@@ -429,15 +444,360 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="懒汉模式，线程不安全"><a href="#懒汉模式，线程不安全" class="headerlink" title="懒汉模式，线程不安全"></a>懒汉模式，线程不安全</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 懒汉模式</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 是否 Lazy 初始化：是</span></span><br><span class="line"><span class="comment"> * 是否多线程安全：否</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 描述：这种方式 lazy loading 很明显，但是致命的是在多线程不能正常工作。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">null</span>)&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <style>
+.article-content div table {
+    width: 50%;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+.article-content div table thead tr th {
+    color:rgb(31,73,125);
+}
+</style>
+
+<h2 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h2><p><code>二进制(binary)</code> 0-1，满2进1，以 <span style="color:red">0b或0B</span> 开头。<br><code>十进制(decimal)</code> 0-9，满10进1。<br><code>八进制(octal)</code> 0-7，满8进1, 以数字 <span style="color:red">0</span> 开头表示。<br><code>十六进制(hex)</code> 0-9及A-F，满16进1，以 <span style="color:red">0x或0X</span> 开头表示。此处的A-F不区分大小写。如：0x21AF +1&#x3D; 0X21B0</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E5%88%A9%E6%A8%A1%E5%BC%8F/#more" rel="contents">
+              <a class="btn" href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E4%BA%8C%E8%BF%9B%E5%88%B6/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/" class="post-title-link" itemprop="url">JDK：版本选择</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 13:45:29" itemprop="dateCreated datePublished" datetime="2019-04-25T13:45:29+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 00:15:22" itemprop="dateModified" datetime="2022-04-19T00:15:22+08:00">2022-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JDK/" itemprop="url" rel="index"><span itemprop="name">JDK</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <table>
+<thead>
+<tr>
+<th>Java SE 版本</th>
+<th>JDK 版本</th>
+<th>开发代号</th>
+<th>发行日期</th>
+<th>最终支持日期</th>
+<th>最终版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Oak</td>
+<td>-</td>
+<td>Oak(橡树)</td>
+<td>1995-05-23</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Java 1.0</td>
+<td>JDK 1.0</td>
+<td>-</td>
+<td>1996-01-23</td>
+<td>-</td>
+<td>1.0.2<br>1996-05-07</td>
+</tr>
+<tr>
+<td>Java 1.1</td>
+<td>JDK 1.1</td>
+<td>-</td>
+<td>1997-02-18</td>
+<td>-</td>
+<td>1.1.8_010<br>2002-10-09</td>
+</tr>
+<tr>
+<td>J2SE 1.2</td>
+<td>JDK 1.2</td>
+<td>Playground(运动场)</td>
+<td>1998-12-04</td>
+<td>-</td>
+<td>1.2.2_017<br>2003-10-02</td>
+</tr>
+<tr>
+<td>J2SE 1.3</td>
+<td>JDK 1.3</td>
+<td>Kestrel(美洲红隼)</td>
+<td>2000-05-08</td>
+<td>-</td>
+<td>1.3.1_29<br>2010-10-12</td>
+</tr>
+<tr>
+<td>J2SE 1.4</td>
+<td>JDK 1.4</td>
+<td>Merlin(灰背隼)</td>
+<td>2002-02-13</td>
+<td>2013-02</td>
+<td>1.4.2_42<br>2013-02-19</td>
+</tr>
+<tr>
+<td>Java SE 5.0</td>
+<td>JDK 1.5</td>
+<td>Tiger(老虎)</td>
+<td>2004-09-29</td>
+<td>2015-04</td>
+<td>5.0u85<br>2015-04-15</td>
+</tr>
+<tr>
+<td>Java SE 6</td>
+<td>JDK 1.6</td>
+<td>Mustang(野马)</td>
+<td>2006-12-12</td>
+<td>2018-12</td>
+<td>6u211<br>2018-10-16</td>
+</tr>
+<tr>
+<td>Java SE 7</td>
+<td>JDK 1.7</td>
+<td>Dolphin(海豚)</td>
+<td>2011-07-11</td>
+<td>2022-07-19</td>
+<td>7u321<br>2021-10-19</td>
+</tr>
+<tr>
+<td>Java SE 8</td>
+<td>JDK 1.8</td>
+<td>Spider(蜘蛛)</td>
+<td>2014-03-18</td>
+<td>2030-12-31</td>
+<td>8u311<br>2021-10-19</td>
+</tr>
+<tr>
+<td>Java SE 9</td>
+<td>JDK 1.9</td>
+<td>-</td>
+<td>2017-09-21</td>
+<td>-</td>
+<td>9.0.4<br>2018-01-16</td>
+</tr>
+<tr>
+<td>Java SE 10</td>
+<td>JDK 10</td>
+<td>-</td>
+<td>2018-03-20</td>
+<td>-</td>
+<td>10.0.2<br>2018-07-17</td>
+</tr>
+<tr>
+<td>Java SE 11</td>
+<td>JDK 11</td>
+<td>-</td>
+<td>2018-09-25</td>
+<td>2026-09-30</td>
+<td>11.0.13<br>2021-10-19</td>
+</tr>
+<tr>
+<td>Java SE 12</td>
+<td>JDK 12</td>
+<td>-</td>
+<td>2019-03-19</td>
+<td>-</td>
+<td>12.0.2<br>2019-07-16</td>
+</tr>
+<tr>
+<td>Java SE 13</td>
+<td>JDK 13</td>
+<td>-</td>
+<td>2019-09-19</td>
+<td>-</td>
+<td>13.0.2<br>2020-01-14</td>
+</tr>
+<tr>
+<td>Java SE 14</td>
+<td>JDK 14</td>
+<td>-</td>
+<td>2020-03-17</td>
+<td>-</td>
+<td>14.0.2<br>2020-07-14</td>
+</tr>
+<tr>
+<td>Java SE 15</td>
+<td>JDK 15</td>
+<td>-</td>
+<td>2020-09-15</td>
+<td>-</td>
+<td>15.0.2<br>2021-01-19</td>
+</tr>
+<tr>
+<td>Java SE 16</td>
+<td>JDK 16</td>
+<td>-</td>
+<td>2021-03-16</td>
+<td>-</td>
+<td>16.0.2<br>2021-07-20</td>
+</tr>
+<tr>
+<td>Java SE 17</td>
+<td>JDK 17</td>
+<td>-</td>
+<td>2021-09-14</td>
+<td>2029-09-30</td>
+<td>17<br>2021-09-14</td>
+</tr>
+<tr>
+<td>Java SE 18</td>
+<td>JDK 18</td>
+<td>-</td>
+<td>2022-03-22</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/JDK/JDK%EF%BC%9A%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Maven/Maven%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Maven/Maven%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%AF%BC%E5%8C%85/" class="post-title-link" itemprop="url">Maven：手动导包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-25 13:45:29" itemprop="dateCreated datePublished" datetime="2019-04-25T13:45:29+08:00">2019-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 23:37:33" itemprop="dateModified" datetime="2022-04-19T23:37:33+08:00">2022-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=&lt;path-to-file&gt; -DgroupId=&lt;group-id&gt; -DartifactId=&lt;artifact-id&gt; -Dversion=&lt;version&gt; -Dpackaging=&lt;packaging&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;path-to-file&gt;</code>：jar包路径</li>
+<li><code>&lt;group-id&gt;</code>：maven依赖中的group-id</li>
+<li><code>&lt;artifact-id&gt;</code>：maven依赖中的artifact-id</li>
+<li><code>&lt;version&gt;</code>：maven依赖中的version jar版本号</li>
+<li><code>&lt;packaging&gt;</code>：规定项目的输出格式，包括jar、war、pom、apk等</li>
+</ul>
+
       
     </div>
 
@@ -455,7 +815,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -523,20 +883,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

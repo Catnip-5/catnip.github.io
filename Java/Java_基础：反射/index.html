@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon_192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/icon_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/icon_32.png">
+  <link rel="mask-icon" href="/images/icons/icon_512.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Hannotate SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"catnip-5.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false,"scrollpercent":true,"dimmer":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="反射机制定义 Java反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。用一句话总结就是反射可以实现在运行时可以知道任意一个类的属性和方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_基础：反射">
+<meta property="og:url" content="https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="Catnip">
+<meta property="og:description" content="反射机制定义 Java反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。用一句话总结就是反射可以实现在运行时可以知道任意一个类的属性和方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-05T06:12:34.000Z">
+<meta property="article:modified_time" content="2022-04-21T16:38:58.107Z">
+<meta property="article:author" content="Catnip">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java_基础">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java_基础：反射 | Catnip</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="Catnip" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Catnip</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<div id="hitokoto" style="text-align: center;padding: 5px 0px 20px 0px;"></div>
+
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = "" + data.hitokoto + "  来自于 " + data.from;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+</script>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Catnip">
+      <meta itemprop="description" content="度过大难, 将有大成, 继续努力, 终成大器.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catnip">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java_基础：反射
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-05 14:12:34" itemprop="dateCreated datePublished" datetime="2019-08-05T14:12:34+08:00">2019-08-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-22 00:38:58" itemprop="dateModified" datetime="2022-04-22T00:38:58+08:00">2022-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>Java反射机制是指在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为java语言的反射机制。用一句话总结就是<code>反射可以实现在运行时可以知道任意一个类的属性和方法</code>。</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="动-x2F-静态编译"><a href="#动-x2F-静态编译" class="headerlink" title="动&#x2F;静态编译"></a>动&#x2F;静态编译</h3><ul>
+<li><code>静态编译</code> 在编译时确定类型，绑定对象，即通过</li>
+<li><code>动态编译</code> 运行时确定类型，绑定对象，动态编译最大限度发挥了java的灵活性，体现了多态的应用，有以降低类之间的耦合性</li>
+</ul>
+<h3 id="优-x2F-缺点"><a href="#优-x2F-缺点" class="headerlink" title="优&#x2F;缺点"></a>优&#x2F;缺点</h3><ul>
+<li><code>优点</code> 增加程序的灵活性，避免将程序写死到代码里</li>
+<li><code>缺点</code> 对性能有影响</li>
+</ul>
+<h2 id="反射相关操作"><a href="#反射相关操作" class="headerlink" title="反射相关操作"></a>反射相关操作</h2><h3 id="获取Class实例"><a href="#获取Class实例" class="headerlink" title="获取Class实例"></a>获取Class实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一：调用运行时类的属性.class</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz1</span> <span class="operator">=</span> Person.class;</span><br><span class="line">System.out.println(clazz1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二：通过运行时类的对象调用getClass()</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>().getClass();</span><br><span class="line">System.out.println(clazz2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式三：调用Class的静态方法forName(String classPath)</span></span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz3</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;com.example.reflect.Person&quot;</span>);</span><br><span class="line">System.out.println(clazz3);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式四：使用类的加载器ClassLoader  (了解)</span></span><br><span class="line"><span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getClassLoader();</span><br><span class="line"><span class="type">Class</span> <span class="variable">clazz4</span> <span class="operator">=</span> classLoader.loadClass(<span class="string">&quot;com.example.reflect.Person&quot;</span>);</span><br><span class="line">System.out.println(clazz4);</span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;com.example.reflect.Person&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类的所有公共的构造函数</span></span><br><span class="line">Constructor[] publicConstructors = clazz.getConstructors();</span><br><span class="line"><span class="keyword">for</span>(Constructor constructor : publicConstructors)&#123;</span><br><span class="line">	System.out.println(constructor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类的所有构造函数，包括私有的在内</span></span><br><span class="line">Constructor[] allConstructors =  clazz.getDeclaredConstructors();</span><br><span class="line"><span class="keyword">for</span>(Constructor constructor : allConstructors)&#123;</span><br><span class="line">	System.out.println(constructor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的公共构造函数</span></span><br><span class="line"><span class="type">Constructor</span> <span class="variable">publicConstructor</span> <span class="operator">=</span> clazz.getConstructor();</span><br><span class="line">System.out.println(publicConstructor);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的构造函数，包括私有的在内</span></span><br><span class="line"><span class="type">Constructor</span> <span class="variable">privateConstructor</span> <span class="operator">=</span> clazz.getDeclaredConstructor(String.class);</span><br><span class="line">System.out.println(privateConstructor);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建公共的运行时类的对象</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person1</span> <span class="operator">=</span> (Person)publicConstructor.newInstance();</span><br><span class="line">System.out.println(person1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建私有的运行时类的对象</span></span><br><span class="line">privateConstructor.setAccessible(<span class="literal">true</span>);<span class="comment">//设置私有访问权限</span></span><br><span class="line"><span class="type">Person</span> <span class="variable">person2</span> <span class="operator">=</span> (Person)privateConstructor.newInstance(<span class="string">&quot;tom&quot;</span>);</span><br><span class="line">System.out.println(person2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;com.example.reflect.Person&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类及父类的所有公共成员方法</span></span><br><span class="line">Method[] publicMethods = clazz.getMethods();</span><br><span class="line"><span class="keyword">for</span>(Method method : publicMethods)&#123;</span><br><span class="line">    System.out.println(method);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类的所有成员方法，包括私有的在内</span></span><br><span class="line">Method[] allMethods =  clazz.getDeclaredMethods();</span><br><span class="line"><span class="keyword">for</span>(Method method : allMethods)&#123;</span><br><span class="line">    System.out.println(method);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的公共成员方法</span></span><br><span class="line"><span class="type">Method</span> <span class="variable">publicMethod</span> <span class="operator">=</span> clazz.getMethod(<span class="string">&quot;toString&quot;</span>);</span><br><span class="line">System.out.println(publicMethod);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的成员方法，包括私有的在内</span></span><br><span class="line"><span class="type">Method</span> <span class="variable">privateMethod</span> <span class="operator">=</span> clazz.getDeclaredMethod(<span class="string">&quot;show&quot;</span>, String.class);</span><br><span class="line">System.out.println(privateMethod);</span><br><span class="line"></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)clazz.newInstance();</span><br><span class="line"><span class="comment">// 调用指定的公共的成员方法</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">publicReturnValue</span> <span class="operator">=</span> publicMethod.invoke(person);</span><br><span class="line">System.out.println(publicReturnValue);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用指定的私有的成员方法</span></span><br><span class="line">privateMethod.setAccessible(<span class="literal">true</span>);<span class="comment">//设置私有访问权限</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">privateReturnValue</span> <span class="operator">=</span> privateMethod.invoke(person, <span class="string">&quot;哈哈&quot;</span>);</span><br><span class="line">System.out.println(privateReturnValue);</span><br></pre></td></tr></table></figure>
+
+<h3 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;com.example.reflect.Person&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类及父类的所有公共成员属性</span></span><br><span class="line">Field[] publicFields = clazz.getFields();</span><br><span class="line"><span class="keyword">for</span>(Field field : publicFields)&#123;</span><br><span class="line">    System.out.println(field);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取一个类的所有成员属性，包括私有的在内</span></span><br><span class="line">Field[] allFields =  clazz.getDeclaredFields();</span><br><span class="line"><span class="keyword">for</span>(Field field : allFields)&#123;</span><br><span class="line">    System.out.println(field);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的公共成员属性</span></span><br><span class="line"><span class="type">Field</span> <span class="variable">publicField</span> <span class="operator">=</span> clazz.getField(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">System.out.println(publicField);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取指定的成员属性，包括私有的在内</span></span><br><span class="line"><span class="type">Field</span> <span class="variable">privateField</span> <span class="operator">=</span> clazz.getDeclaredField(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">System.out.println(privateField);</span><br><span class="line"></span><br><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> (Person)clazz.newInstance();</span><br><span class="line"><span class="comment">// 设置指定的公共的成员属性</span></span><br><span class="line">publicField.set(person, <span class="number">1001</span>);</span><br><span class="line">System.out.println(person);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置指定的私有的成员属性</span></span><br><span class="line">privateField.setAccessible(<span class="literal">true</span>);<span class="comment">//设置私有访问权限</span></span><br><span class="line">privateField.set(person, <span class="string">&quot;tom&quot;</span>);</span><br><span class="line">System.out.println(person);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/Java-%E5%9F%BA%E7%A1%80/" rel="tag"><i class="fa fa-tag"></i> Java_基础</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%B3%A8%E8%A7%A3/" rel="prev" title="Java_基础：注解">
+      <i class="fa fa-chevron-left"></i> Java_基础：注解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9APaths%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="next" title="Java_基础：Paths工具类">
+      Java_基础：Paths工具类 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">反射机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8-x2F-%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91"><span class="nav-number">1.2.</span> <span class="nav-text">动&#x2F;静态编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98-x2F-%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">优&#x2F;缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">反射相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96Class%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">获取Class实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">成员属性</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Catnip"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Catnip</p>
+  <div class="site-description" itemprop="description">度过大难, 将有大成, 继续努力, 终成大器.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="feed-link motion-element">
+    <a href="/rss2.xml" rel="alternate">
+      <i class="fa fa-rss"></i>
+      RSS
+    </a>
+  </div>
+
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/catnip-5" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;catnip-5" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=1007331304&site=qq&menu=yes" title="QQ → http:&#x2F;&#x2F;wpa.qq.com&#x2F;msgrd?v&#x3D;3&amp;uin&#x3D;1007331304&amp;site&#x3D;qq&amp;menu&#x3D;yes" rel="noopener" target="_blank"><i class="fab fa-qq fa-fw"></i>QQ</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=catnip.h.y@gmail.com" title="E-mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;catnip.h.y@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        <!--
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Catnip</span>
+</div>
+
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+  
+	<script type="text/javascript" src="/js/cursor/fireworks.js"></script>
+  
+
+
+</body>
+</html>

@@ -119,17 +119,17 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -246,7 +246,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 00:47:09" itemprop="dateModified" datetime="2022-04-22T00:47:09+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-23 23:09:31" itemprop="dateModified" datetime="2022-04-23T23:09:31+08:00">2022-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,51 +270,14 @@
 
       
           <p><img src="/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/IO%E7%B1%BB%E5%9E%8B.png" alt="IO类型"></p>
-<h2 id="BIO、NIO、AIO基本说明"><a href="#BIO、NIO、AIO基本说明" class="headerlink" title="BIO、NIO、AIO基本说明"></a>BIO、NIO、AIO基本说明</h2><ul>
-<li><code>BIO:</code> 同步并阻塞(传统阻塞型)，服务器实现模式为一个连接一个线程，即客户端 有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销</li>
-<li><code>NIO:</code> 同步非阻塞，服务器实现模式为一个线程处理多个请求(连接)，即客户端发 送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I&#x2F;O请求就进行处理</li>
-<li><code>AIO:</code> 异步非阻塞，AIO引入异步通道的概念，采用了 Proactor 模式，简化了程序编写，有效的请求才启动线程，它的特点是先由操作系统完成后才通知服务端程序启动线程去处理，一般使用于连接数较多且连接时间较长的应用</li>
-</ul>
-<h2 id="BIO、NIO、AIO适用场景分析"><a href="#BIO、NIO、AIO适用场景分析" class="headerlink" title="BIO、NIO、AIO适用场景分析"></a>BIO、NIO、AIO适用场景分析</h2><ul>
-<li><code>BIO:</code> 适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高， 并发局限于应用中，JDK1.4以前的唯一选择，但程序简单易理解。</li>
-<li><code>NIO:</code> 适用于连接数目多且连接比较短(轻操作)的架构，比如聊天服务器，弹幕 系统，服务器间通讯等。编程比较复杂，JDK1.4开始支持。</li>
-<li><code>AIO:</code> 使用于连接数目多且连接比较长(重操作)的架构，比如相册服务器，充分 调用OS参与并发操作，编程比较复杂，JDK7开始支持。</li>
-</ul>
-<h2 id="BIO、NIO、AIO对比"><a href="#BIO、NIO、AIO对比" class="headerlink" title="BIO、NIO、AIO对比"></a>BIO、NIO、AIO对比</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>BIO</th>
-<th>NIO</th>
-<th>AIO</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>IO 模型</td>
-<td>同步阻塞</td>
-<td>同步非阻塞(多路复用)</td>
-<td>异步非阻塞</td>
-</tr>
-<tr>
-<td>编程难度</td>
-<td>简单</td>
-<td>复杂</td>
-<td>复杂</td>
-</tr>
-<tr>
-<td>可靠性</td>
-<td>差</td>
-<td>好</td>
-<td>好</td>
-</tr>
-<tr>
-<td>吞吐量</td>
-<td>低</td>
-<td>高</td>
-<td>高</td>
-</tr>
-</tbody></table>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Java/Java_IO%EF%BC%9AIO%E7%B1%BB%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -364,7 +327,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 00:45:23" itemprop="dateModified" datetime="2022-04-22T00:45:23+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-23 23:09:31" itemprop="dateModified" datetime="2022-04-23T23:09:31+08:00">2022-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -489,7 +452,14 @@
 <td>PrintWriter</td>
 </tr>
 </tbody></table>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Java/Java_IO%EF%BC%9A%E6%B5%81%E4%BD%93%E7%B3%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -675,7 +645,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="https://catnip-5.github.io/Java/Java_%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -689,7 +659,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">Java_基础：自增变量</a>
+            <a href="/Java/Java_%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="post-title-link" itemprop="url">Java_多线程：线程池</a>
         </h2>
 
         <div class="post-meta">
@@ -699,14 +669,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-08-02 14:12:34" itemprop="dateCreated datePublished" datetime="2019-08-02T14:12:34+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-03 14:12:34" itemprop="dateCreated datePublished" datetime="2019-08-03T14:12:34+08:00">2019-08-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-22 00:38:58" itemprop="dateModified" datetime="2022-04-22T00:38:58+08:00">2022-04-22</time>
+                <time title="修改时间：2022-04-23 23:09:31" itemprop="dateModified" datetime="2022-04-23T23:09:31+08:00">2022-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -729,10 +699,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        i = i++;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i++;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i + ++i * i++;</span><br><span class="line">        System.out.println(<span class="string">&quot;i=&quot;</span> + i);</span><br><span class="line">        System.out.println(<span class="string">&quot;j=&quot;</span> + j);</span><br><span class="line">        System.out.println(<span class="string">&quot;k=&quot;</span> + k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><ul>
+<li><code>线程池 </code> 主要是控制运行的线程数量。<code>处理过程中将任务放入队列</code>，然后在线程创建后启动这些任务，<code>如果线程数量超过了最大数量超出数量大线程排队等候</code>，等其他线程执行完毕，再从队列中取出任务来执行。</li>
+<li>主要特点：<code>线程复用</code>、<code>控制最大并发数</code>、<code>管理线程</code>。</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Java/Java_%E5%9F%BA%E7%A1%80%EF%BC%9A%E8%87%AA%E5%A2%9E%E5%8F%98%E9%87%8F/#more" rel="contents">
+              <a class="btn" href="/Java/Java_%E5%A4%9A%E7%BA%BF%E7%A8%8B%EF%BC%9A%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -755,7 +728,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -823,20 +796,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
